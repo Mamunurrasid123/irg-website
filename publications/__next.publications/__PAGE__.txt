@@ -1,0 +1,5 @@
+1:"$Sreact.fragment"
+2:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+3:"$Sreact.suspense"
+0:{"buildId":"SGIsL353P-PEqYfSZd0XS","rsc":["$","$1","c",{"children":[["$","div",null,{"children":[["$","h1",null,{"children":"Publications"}],["$","p",null,{"style":{"lineHeight":1.8,"maxWidth":900},"children":"Add IRG publications, working papers, and student thesis projects here. We can later connect this to BibTeX/CSV."}],["$","ul",null,{"style":{"lineHeight":1.9,"marginTop":14},"children":[["$","li","0",{"children":[["$","strong",null,{"children":["2026"," — ","Publication Title (Add)"]}],["$","div",null,{"style":{"opacity":0.85},"children":"Journal/Conference (Add)"}]]}],["$","li","1",{"children":[["$","strong",null,{"children":["2025"," — ","Publication Title (Add)"]}],["$","div",null,{"style":{"opacity":0.85},"children":"Journal/Conference (Add)"}]]}]]}]]}],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"loading":null,"isPartial":false}
+4:null

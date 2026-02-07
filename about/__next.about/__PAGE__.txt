@@ -1,0 +1,5 @@
+1:"$Sreact.fragment"
+2:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+3:"$Sreact.suspense"
+0:{"buildId":"SGIsL353P-PEqYfSZd0XS","rsc":["$","$1","c",{"children":[["$","div",null,{"children":[["$","h1",null,{"children":"About IRG"}],["$","p",null,{"style":{"lineHeight":1.8,"maxWidth":900},"children":"The Interdisciplinary Research Group (IRG) fosters collaborative research across disciplines at AUW. We support student-led research, faculty collaboration, and research training that prepares students for graduate study and impact-driven careers."}],["$","h2",null,{"style":{"marginTop":22},"children":"Goals"}],["$","ul",null,{"style":{"lineHeight":1.9},"children":[["$","li",null,{"children":"Build a research culture through seminars, mentoring, and projects"}],["$","li",null,{"children":"Publish and present research in conferences and journals"}],["$","li",null,{"children":"Develop student skills in scientific computing, data analysis, and writing"}]]}]]}],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"loading":null,"isPartial":false}
+4:null
