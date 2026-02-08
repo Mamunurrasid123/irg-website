@@ -1,68 +1,131 @@
 export type Member = {
   slug: string;
   name: string;
-  role: string;
-  affiliation: string;
-  interests: string[];
+
+  role?: string;
+  program?: string;     // For students (UG 1-1, MS etc.)
+  major?: string;
+
+  affiliation?: string;
+  interests?: string[];
+
   email?: string;
-  photo?: string; // path under /public
-  bio: string;
+  photo?: string;
+  bio?: string;
+
   links?: { label: string; url: string }[];
 };
 
 export const members: Member[] = [
+
+  // ⭐⭐⭐ FACULTY ⭐⭐⭐
+
   {
     slug: "mamunur-rasid",
     name: "Dr. Md. Mamunur Rasid",
     role: "Faculty Lead / Director",
     affiliation: "Asian University for Women (AUW)",
-    interests: ["Computational Mathematics", "Scientific Computing", "Numerical PDEs", "Data Science"],
+    interests: [
+      "Computational Mathematics",
+      "Scientific Computing",
+      "Numerical PDEs",
+      "Data Science"
+    ],
     email: "irg@auw.edu.bd",
     photo: "/members/mamunur.png",
     bio:
-      "Leads IRG activities including seminars, student mentoring, and interdisciplinary collaborations. Research interests include numerical methods for PDEs, Lagrange–Galerkin schemes, and computational modeling.",
+      "Dr. Md. Mamunur Rasid leads the Interdisciplinary Research Group (IRG), fostering collaborative research, mentoring students, and advancing computational mathematics and data-driven scientific discovery.",
     links: [
       { label: "Google Scholar", url: "https://scholar.google.com/" },
-      { label: "ORCID", url: "https://orcid.org/" },
+      { label: "ORCID", url: "https://orcid.org/" }
     ],
   },
   {
-    slug: "faculty-member-1",
-    name: "Faculty Member (Add Name)",
-    role: "Co-Lead (Add Role)",
+    slug: "faculty-co-lead 1",
+    name: "Dr. Md Anowar Hossain",
+    role: "Co-Lead",
     affiliation: "Asian University for Women (AUW)",
-    interests: ["AI / ML", "Applied Data Science", "Education"],
+    interests: [
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Applied Data Science"
+    ],
     photo: "/members/placeholder.png",
-    bio: "Add short bio here. You can later expand with projects, grants, and publications.",
-    links: [{ label: "Profile Link", url: "https://auw.edu.bd/" }],
+    bio:
+      "Researcher contributing to interdisciplinary initiatives across AI, education, and applied analytics.",
+    links: [
+      { label: "AUW Profile", url: "https://auw.edu.bd/" }
+    ],
+  },
+{
+    slug: "faculty-co-lead 2",
+    name: "Dr. Md Aamir Farooq",
+    role: "Co-Lead",
+    affiliation: "Asian University for Women (AUW)",
+    interests: [
+      "Trafice Flow Prediction",
+      "Game Theory",
+    ],
+    photo: "/members/placeholder.png",
+    bio:
+      "Researcher contributing to interdisciplinary initiatives across AI, education, and applied analytics.",
+    links: [
+      { label: "AUW Profile", url: "https://auw.edu.bd/" }
+    ],
   },
   {
-    slug: "student-researcher-1",
-    name: "Student Researcher (Add Name)",
-    role: "Undergraduate Researcher",
-    affiliation: "AUW",
-    interests: ["Statistics", "Python", "Research Methods"],
+    slug: "faculty-co-lead 3",
+    name: "Dr. Md Junayed Nayem",
+    role: "Co-Lead",
+    affiliation: "Asian University for Women (AUW)",
+    interests: [
+      "Machine Learning",
+      "Applied Data Science"
+    ],
     photo: "/members/placeholder.png",
-    bio: "Add student bio here (research interests, projects, achievements).",
+    bio:
+      "Researcher contributing to interdisciplinary initiatives across AI, education, and applied analytics.",
+    links: [
+      { label: "AUW Profile", url: "https://auw.edu.bd/" }
+    ],
   },
-  ,
+  // ⭐⭐⭐ STUDENTS ⭐⭐⭐
+  // Keep them SHORT — this is how top labs display students.
+
   {
-    slug: "student-researcher-2",
-    name: "Student Researcher (Add Name)",
-    role: "Undergraduate Researcher",
-    affiliation: "AUW",
-    interests: ["Statistics", "Python", "Research Methods"],
+    slug: "sadia-akter",
+    name: "Sadia Akter",
+    role: "Student Researcher",
+    program: "UG 1-1",
+    major: "Mathematics & Data Science",
     photo: "/members/placeholder.png",
-    bio: "Add student bio here (research interests, projects, achievements).",
   },
-  ,
+
   {
-    slug: "student-researcher-3",
-    name: "Student Researcher (Add Name)",
-    role: "Undergraduate Researcher",
-    affiliation: "AUW",
-    interests: ["Statistics", "Python", "Research Methods"],
+    slug: "fatima-noor",
+    name: "Fatima Noor",
+    role: "Student Researcher",
+    program: "UG 2-1",
+    major: "Computer Science",
     photo: "/members/placeholder.png",
-    bio: "Add student bio here (research interests, projects, achievements).",
   },
+
+  {
+    slug: "nabila-islam",
+    name: "Nabila Islam",
+    role: "Student Researcher",
+    program: "UG 3-2",
+    major: "Economics",
+    photo: "/members/placeholder.png",
+  },
+
+  {
+    slug: "amina-khatun",
+    name: "Amina Khatun",
+    role: "Student Researcher",
+    program: "UG 2-2",
+    major: "Environmental Science",
+    photo: "/members/placeholder.png",
+  }
+
 ];
