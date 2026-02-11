@@ -33,23 +33,30 @@ export default function MembersPage() {
             >
               <div style={{ display: "flex", gap: 14, alignItems: "center" }}>
                 <div
-                  style={{
-                    width: 72,
-                    height: 72,
-                    borderRadius: 18,
-                    overflow: "hidden",
-                    border: "1px solid var(--border)",
-                  }}
-                >
-                  <Image
-                    unoptimized
-                    src={m.photo || "/members/placeholder.png"}
-                    alt={m.name}
-                    width={72}
-                    height={72}
-                    style={{ objectFit: "cover" }}
-                  />
-                </div>
+  style={{
+    width: 30,
+    height: 30,
+    borderRadius: "50%",
+    overflow: "hidden",
+    border: "1px solid var(--border)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  }}
+>
+  <Image
+    unoptimized
+    src={m.photo || "/members/placeholder.png"}
+    alt={m.name}
+    width={30}
+    height={30}
+    style={{
+      objectFit: "cover",
+      width: "100%",
+      height: "100%",
+    }}
+  />
+</div>
 
                 <div>
                   <div style={{ fontWeight: 900, letterSpacing: "-0.01em" }}>
@@ -103,8 +110,8 @@ export default function MembersPage() {
               <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
                 <div
                   style={{
-                    width: 58,
-                    height: 58,
+                    width: 40,
+                    height: 30,
                     borderRadius: 16,
                     overflow: "hidden",
                     border: "1px solid var(--border)",

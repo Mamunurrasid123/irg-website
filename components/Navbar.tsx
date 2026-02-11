@@ -36,7 +36,7 @@ export default function Navbar() {
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             {/* AUW Logo */}
             <Image
-              src="/auw-logo.png"
+              src="/irg-logo-final.png"
               alt="AUW"
               width={36}
               height={36}

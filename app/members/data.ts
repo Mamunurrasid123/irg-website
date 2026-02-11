@@ -27,38 +27,37 @@ export const members: Member[] = [
     affiliation: "Asian University for Women (AUW)",
     interests: [
       "Computational Mathematics",
-      "Scientific Computing",
-      "Numerical PDEs",
-      "Data Science"
+      "AI, ML & Data Science"
     ],
     email: "irg@auw.edu.bd",
-    photo: "/members/mamunur.png",
+    photo: "/members/mamunur.jpg",
     bio:
       "Dr. Md. Mamunur Rasid leads the Interdisciplinary Research Group (IRG), fostering collaborative research, mentoring students, and advancing computational mathematics and data-driven scientific discovery.",
     links: [
-      { label: "Google Scholar", url: "https://scholar.google.com/" },
+      { label: "ResearchGate", url: "https://www.researchgate.net/profile/Md-Rasid" },
       { label: "ORCID", url: "https://orcid.org/" }
     ],
   },
   {
-    slug: "faculty-co-lead 1",
+    slug: "faculty-co-lead-1",
     name: "Dr. Md Anowar Hossain",
     role: "Co-Lead",
     affiliation: "Asian University for Women (AUW)",
     interests: [
-      "Artificial Intelligence",
-      "Machine Learning",
-      "Applied Data Science"
+      "Traffic Flow Modeling",
+      "CA Model",
+      "Agent Based Simulation",
+      "Epidemiology and Game Theory"  
     ],
-    photo: "/members/placeholder.png",
+    photo: "/members/anowar.jpeg",
     bio:
       "Researcher contributing to interdisciplinary initiatives across AI, education, and applied analytics.",
     links: [
-      { label: "AUW Profile", url: "https://auw.edu.bd/" }
+      { label: "AUW Profile", url: "https://scholar.google.com/citations?user=FFKTQrYAAAAJ&hl=en" }
     ],
   },
 {
-    slug: "faculty-co-lead 2",
+    slug: "faculty-co-lead-2",
     name: "Dr. Md Aamir Farooq",
     role: "Co-Lead",
     affiliation: "Asian University for Women (AUW)",
@@ -74,7 +73,7 @@ export const members: Member[] = [
     ],
   },
   {
-    slug: "faculty-co-lead 3",
+    slug: "faculty-co-lead-3",
     name: "Dr. Md Junayed Nayem",
     role: "Co-Lead",
     affiliation: "Asian University for Women (AUW)",
