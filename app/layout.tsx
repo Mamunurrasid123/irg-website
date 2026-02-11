@@ -11,16 +11,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body style={{ margin: 0 }}>
-        {/* Flex layout ensures footer stays at the bottom on short pages */}
         <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+          
           <Navbar />
 
-          {/* Main grows to push footer down, but no background here */}
-          <main style={{ flex: 1 }}>
+          {/* Space above and below main */}
+          <main style={{ flex: 1, padding: "24px 0" }}>
             {children}
           </main>
 
           <Footer />
+
         </div>
       </body>
     </html>
