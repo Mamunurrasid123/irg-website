@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer style={{ borderTop: "1px solid var(--border)", background: "var(--soft)" }}>
+    <footer style={{ borderTop: "1px solid var(--border)", background: "rgba(22,111,201,0.7)" }} >
       <div className="container" style={{ padding: "18px 18px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", gap: 14, flexWrap: "wrap" }}>
           <div>

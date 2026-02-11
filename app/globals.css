@@ -114,7 +114,7 @@ a:hover { text-decoration: underline; text-underline-offset: 4px; }
   backdrop-filter: blur(10px);
 }
 
-.btn:hover { background: rgba(255,255,255,0.95); text-decoration: none; }
+.btn:hover { background: rgba(255, 255, 255, 0.95); text-decoration: none; }
 
 .btnPrimary {
   border-color: #0b1220;

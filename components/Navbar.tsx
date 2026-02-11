@@ -4,7 +4,7 @@ import Image from "next/image";
 const nav = [
   { href: "/about", label: "About" },
   { href: "/research", label: "Research" },
-  { href: "/members", label: "Members" },
+  { href: "/members", label: "Teams" },
   { href: "/publications", label: "Publications" },
   { href: "/events", label: "Events" },
   { href: "/contact", label: "Contact" },
@@ -17,7 +17,7 @@ export default function Navbar() {
         position: "sticky",
         top: 0,
         zIndex: 50,
-        background: "rgba(234, 244, 255, 0.70)",
+        background: "rgba(8, 88, 173, 0.7)",
         backdropFilter: "blur(10px)",
         borderBottom: "1px solid var(--border)",
       }}
@@ -40,7 +40,7 @@ export default function Navbar() {
               alt="AUW"
               width={36}
               height={36}
-              style={{ borderRadius: 10, background: "rgba(255,255,255,0.7)", padding: 4, border: "1px solid var(--border)" }}
+              style={{ borderRadius: 10, background: "rgba(22, 111, 201, 0.7)", padding: 4, border: "1px solid var(--border)" }}
             />
 
             {/* IRG Logo (optional) */}
@@ -48,7 +48,10 @@ export default function Navbar() {
               <div style={{ fontWeight: 900, letterSpacing: "-0.01em" }}>
                 Interdisciplinary Research Group (IRG)
               </div>
-              <div className="small">Asian University for Women • Chattogram</div>
+             <div className="small" style={{ color: "white" }}>
+  Asian University for Women • Chattogram
+</div>
+
             </div>
           </div>
         </Link>
