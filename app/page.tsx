@@ -3,10 +3,10 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div >
-      <section className="hero" style={{ maxWidth: 1000, padding: "20px 20px" }}>
+      <section className="hero" style={{ maxWidth: 1350, margin: "0 auto", padding: "20px 20px" }}>
         <div className="kicker" >Research • Collaboration • Student Mentoring</div>
 
-        <h1 className="h1" style={{ marginTop: 0 }}>
+        <h1 className="h1" style={{ marginTop: 12 }}>
           Interdisciplinary Research Group (IRG)
         </h1>
 
