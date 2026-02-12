@@ -2,9 +2,9 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div>
-      <section className="hero">
-        <div className="kicker">Research • Collaboration • Student Mentoring</div>
+    <div >
+      <section className="hero" style={{ maxWidth: 1350, margin: "0 auto", padding: "10px 10px" }}>
+        <div className="kicker" >Research • Collaboration • Student Mentoring</div>
 
         <h1 className="h1" style={{ marginTop: 12 }}>
           Interdisciplinary Research Group (IRG)
@@ -39,8 +39,35 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section">
-        <h2 className="h2">Core Themes</h2>
+      <section className="section" style={{ maxWidth: 1400, margin: "0 auto", padding: "20px 20px" }}>
+        <div style={{ marginBottom: 30 }}>
+          <h2
+            style={{
+              fontSize: "30px",
+              fontWeight: 900,
+              letterSpacing: "-0.02em",
+              margin: 0,
+            }}
+          >
+            Core Themes
+          </h2>
+
+          <div
+            style={{
+              width: 60,
+              height: 4,
+              background: "linear-gradient(to right, #1e3a8a, #2563eb)",
+              marginTop: 0,
+              borderRadius: 6,
+            }}
+          />
+        </div>
+        {/* <h2 className="h2" style={{
+              fontSize: "30px",
+              fontWeight: 900,
+              letterSpacing: "-0.02em",
+              margin: 0,
+            }}>Core Themes</h2> */}
 
         <div className="grid grid-4" style={{ marginTop: 12 }}>
           {[
@@ -57,8 +84,38 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section">
-        <h2 className="h2">Quick Links</h2>
+      <section className="section" style={{ maxWidth: 1400, margin: "0 auto", padding: "20px 20px" }}>
+        <div style={{ marginBottom: 30 }}>
+          <h2
+            style={{
+              fontSize: "30px",
+              fontWeight: 900,
+              letterSpacing: "-0.02em",
+              margin: 0,
+            }}
+          >
+            Quick Links
+          </h2>
+
+          <div
+            style={{
+              width: 60,
+              height: 4,
+              background: "linear-gradient(to right, #1e3a8a, #2563eb)",
+              marginTop: 10,
+              borderRadius: 6,
+            }}
+          />
+        </div>
+
+        {/* <div style={{ marginBottom: 30 }}></div>
+        <h2 className="h2" style={{
+              fontSize: "30px",
+              fontWeight: 900,
+              letterSpacing: "-0.02em",
+              margin: 0,
+              marginBottom: 30,
+            }}>Quick Links</h2> */}
         <div className="grid grid-2" style={{ marginTop: 12 }}>
           <div className="card">
             <div style={{ fontWeight: 700 }}>For Students</div>

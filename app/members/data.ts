@@ -23,7 +23,7 @@ export const members: Member[] = [
   {
     slug: "mamunur-rasid",
     name: "Dr. Md. Mamunur Rasid",
-    role: "Faculty Lead / Director",
+    role: "Lead",
     affiliation: "Asian University for Women (AUW)",
     interests: [
       "Computational Mathematics",
@@ -41,13 +41,10 @@ export const members: Member[] = [
   {
     slug: "faculty-co-lead-1",
     name: "Dr. Md Anowar Hossain",
-    role: "Co-Lead",
+    role: "Lead",
     affiliation: "Asian University for Women (AUW)",
     interests: [
-      "Traffic Flow Modeling",
-      "CA Model",
-      "Agent Based Simulation",
-      "Epidemiology and Game Theory"  
+      "Traffic Flow Modeling, CA Model, Agent Based Simulation,& Epidemiology and Game Theory"  
     ],
     photo: "/members/anowar.jpeg",
     bio:
@@ -59,7 +56,7 @@ export const members: Member[] = [
 {
     slug: "faculty-co-lead-2",
     name: "Dr. Md Aamir Farooq",
-    role: "Co-Lead",
+    role: "Lead",
     affiliation: "Asian University for Women (AUW)",
     interests: [
       "Trafice Flow Prediction",
