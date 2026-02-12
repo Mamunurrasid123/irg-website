@@ -57,7 +57,7 @@ export default function Home() {
               width: 60,
               height: 4,
               background: "linear-gradient(to right, #1e3a8a, #2563eb)",
-              marginTop: 0,
+              marginTop: 10,
               borderRadius: 6,
             }}
           />
