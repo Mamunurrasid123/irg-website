@@ -5,15 +5,15 @@ const events = [
 
 export default function Events() {
   return (
-    <div>
+    <div style={{ padding: "20px 20px", backgroundColor: "#b1ceea", borderRadius: 14, maxWidth: 1350, margin: "0 auto" }}>
       <h1>Events</h1>
       <p style={{ lineHeight: 1.8, maxWidth: 900 }}>
         Seminars, workshops, reading groups, student presentations, and special talks.
       </p>
 
-      <div style={{ marginTop: 14, display: "grid", gap: 12 }}>
+      <div style={{ marginTop: 14, display: "grid", gap: 12, padding: 14, borderRadius: 14 }}>
         {events.map((e) => (
-          <div key={e.date + e.title} style={{ border: "1px solid #e5e7eb", borderRadius: 14, padding: 14 }}>
+          <div key={e.date + e.title} style={{ border: "1px solid #e5e7eb", backgroundColor: "#8b6fe6d5",borderRadius: 14, padding: 14 }}>
             <strong>{e.title}</strong>
             <div style={{ marginTop: 6, opacity: 0.9 }}>{e.date} • {e.place}</div>
           </div>

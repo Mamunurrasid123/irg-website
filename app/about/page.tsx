@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <div>
+    <div style={{ padding: "20px 20px", backgroundColor: "#b1ceea", borderRadius: 14, maxWidth: 1350, margin: "0 auto" }}>
       <h1>About IRG</h1>
       <p style={{ lineHeight: 1.8, maxWidth: 900 }}>
         The Interdisciplinary Research Group (IRG) fosters collaborative research across disciplines at AUW.
