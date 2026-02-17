@@ -8,6 +8,8 @@ const nav = [
   { href: "/publications", label: "Publications" },
   { href: "/events", label: "Events" },
   { href: "/contact", label: "Contact" },
+    // 👇 Add this
+  { href: "/games/tic-tac-toe", label: "Interactive Projects" },
 ];
 
 export default function Navbar() {
@@ -17,7 +19,7 @@ export default function Navbar() {
         position: "sticky",
         top: 0,
         zIndex: 50,
-        background: "#FFC000CC",
+        background: "#FFC000",
         backdropFilter: "blur(10px)",
         borderBottom: "1px solid var(--border)",
       }}
