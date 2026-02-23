@@ -214,15 +214,15 @@ export default function TicTacToe() {
       ? "linear-gradient(145deg,#d9ffd9,#bff0bf)"
       : "linear-gradient(145deg,#f0f0f0,#dcdcdc)",
     boxShadow: win
-      ? "5px 5px 10px rgba(0,0,0,.12), -5px -5px 10px rgba(255,255,255,.9)"
-      : "6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff",
+      ? "5px 5px 10px rgba(0,0,0,.12), -5px -5px 10px rgba(241, 212, 25, 0.9)"
+      : "6px 6px 12px #eee12b, -6px -6px 12px #e7d90b",
     transition: "transform .12s ease",
   });
 
   const selectStyle: React.CSSProperties = {
     padding: "8px 10px", // ✅ slightly smaller
     borderRadius: 12,
-    border: "1px solid #e5e5e5",
+    border: "1px solid #e7eb0c",
     fontWeight: 900,
     background: "white",
   };
@@ -244,7 +244,7 @@ export default function TicTacToe() {
             style={{
               position: "absolute",
               inset: 0,
-              background: "rgba(255,255,255,.65)",
+              background: "rgba(220, 195, 11, 0.92)",
               display: "grid",
               placeItems: "center",
               zIndex: 10,
