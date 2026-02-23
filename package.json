@@ -2,14 +2,14 @@
   "name": "irg-website",
   "version": "0.1.0",
   "private": true,
-"scripts": {
-  "dev": "next dev",
-  "build": "next build",
-  "start": "next start",
-  "deploy": "gh-pages -d out"
-}
-,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "deploy": "gh-pages -d out"
+  },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3"
