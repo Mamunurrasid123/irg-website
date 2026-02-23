@@ -1,61 +1,86 @@
 "use client";
 
 import { useState } from "react";
-import emailjs from "@emailjs/browser";
 
 export default function Contact() {
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState("");
+  const [status, setStatus] = useState<{
+    type: "success" | "error";
+    message: string;
+  } | null>(null);
 
-  const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    setSuccess("");
+    setStatus(null);
 
     const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    const payload = {
+      name: String(formData.get("name") || "").trim(),
+      email: String(formData.get("email") || "").trim(),
+      role: String(formData.get("role") || "").trim(),
+      message: String(formData.get("message") || "").trim(),
+    };
 
     try {
-      await emailjs.sendForm(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
-        form,
-        "YOUR_PUBLIC_KEY"
-      );
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
-      setSuccess("Message sent successfully!");
+      const data = await res.json();
+
+      if (!res.ok || !data.ok) {
+        throw new Error(data?.error || "Submission failed.");
+      }
+
+      setStatus({
+        type: "success",
+        message: "Thank you! Your message has been submitted successfully. We will reach out to soon",
+      });
+
       form.reset();
-    } catch (error) {
-      setSuccess("Failed to send message. Please try again.");
+    } catch (error: any) {
+      setStatus({
+        type: "error",
+        message:
+          error?.message || "Something went wrong. Please try again later.",
+      });
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   return (
     <div
       style={{
-        padding: "40px 20px",
-        backgroundColor: "#b1ceea",
-        borderRadius: 14,
-        maxWidth: 900,
-        margin: "40px auto",
+        maxWidth: 600,
+        maxHeight:560,
+        margin: "20px auto",
+        padding: "20px 20px",
+        backgroundColor: "#f8fafc",
+        borderRadius: 16,
+        boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
       }}
     >
       <h1 style={{ marginBottom: 10 }}>Contact & Join IRG</h1>
 
-      <p style={{ marginBottom: 20 }}>
-        Interested in collaborating or joining IRG? Please fill out the form below.
+      <p style={{ marginBottom: 10, color: "#26ef07",fontWeight: 700, }}>
+        Interested in collaborating or joining the Interdisciplinary Research Group (IRG)?  
+        Please fill out the form below.
       </p>
 
       <form
-        onSubmit={sendEmail}
+        onSubmit={handleSubmit}
         style={{
-          background: "white",
-          padding: 20,
-          borderRadius: 14,
           display: "flex",
           flexDirection: "column",
-          gap: 15,
+          gap: 10,
         }}
       >
         <input
@@ -93,29 +118,42 @@ export default function Contact() {
           type="submit"
           disabled={loading}
           style={{
-            backgroundColor: "#7c3aed",
+            backgroundColor: "#8b0000",
             color: "white",
-            padding: "12px",
+            padding: "14px",
             borderRadius: 10,
             border: "none",
-            cursor: "pointer",
-            fontWeight: "bold",
+            fontWeight: 600,
+            cursor: loading ? "not-allowed" : "pointer",
+            transition: "0.2s ease",
           }}
         >
-          {loading ? "Sending..." : "Send Message"}
+          {loading ? "Submitting..." : "Submit"}
         </button>
 
-        {success && (
-          <p style={{ color: "green", marginTop: 10 }}>{success}</p>
+        {status && (
+          <div
+            style={{
+              marginTop: 2,
+              padding: 5,
+              borderRadius: 5,
+              backgroundColor:
+                status.type === "success" ? "#e6fffa" : "#ffe6e6",
+              color: status.type === "success" ? "#065f46" : "#8b0000",
+            }}
+          >
+            {status.message}
+          </div>
         )}
       </form>
 
       <div
         style={{
-          marginTop: 30,
-          background: "#f3f4f6",
-          padding: 15,
-          borderRadius: 12,
+          marginTop: 5,
+          paddingTop: 5,
+          borderTop: "1px solid #e5e7eb",
+          fontSize: 14,
+          color: "#666",
         }}
       >
         <p>
@@ -131,9 +169,10 @@ export default function Contact() {
   );
 }
 
-const inputStyle = {
-  padding: "12px",
+const inputStyle: React.CSSProperties = {
+  padding: "12px 14px",
   borderRadius: 8,
   border: "1px solid #d1d5db",
-  fontSize: "14px",
+  fontSize: 14,
+  outline: "none",
 };
