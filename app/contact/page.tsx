@@ -27,21 +27,26 @@ export default function Contact() {
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
-      const data = await res.json();
+      const text = await res.text();
+      let data: any = {};
+      try {
+        data = JSON.parse(text);
+      } catch {}
 
       if (!res.ok || !data.ok) {
-        throw new Error(data?.error || "Submission failed.");
+        throw new Error(
+          data?.message || data?.error || "Submission failed."
+        );
       }
 
       setStatus({
         type: "success",
-        message: "Thank you! Your message has been submitted successfully. We will reach out to soon",
+        message:
+          "Thank you! Your message has been submitted successfully. We will reach out soon.",
       });
 
       form.reset();
@@ -49,7 +54,8 @@ export default function Contact() {
       setStatus({
         type: "error",
         message:
-          error?.message || "Something went wrong. Please try again later.",
+          error?.message ||
+          "Something went wrong. Please try again later.",
       });
     } finally {
       setLoading(false);
@@ -60,9 +66,8 @@ export default function Contact() {
     <div
       style={{
         maxWidth: 600,
-        maxHeight:560,
-        margin: "20px auto",
-        padding: "20px 20px",
+        margin: "40px auto",
+        padding: "30px",
         backgroundColor: "#f8fafc",
         borderRadius: 16,
         boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
@@ -70,8 +75,14 @@ export default function Contact() {
     >
       <h1 style={{ marginBottom: 10 }}>Contact & Join IRG</h1>
 
-      <p style={{ marginBottom: 10, color: "#26ef07",fontWeight: 700, }}>
-        Interested in collaborating or joining the Interdisciplinary Research Group (IRG)?  
+      <p
+        style={{
+          marginBottom: 20,
+          color: "#ef6c07",
+          fontWeight: 700,
+        }}
+      >
+        Interested in collaborating or joining the Interdisciplinary Research Group (IRG)?
         Please fill out the form below.
       </p>
 
@@ -80,7 +91,7 @@ export default function Contact() {
         style={{
           display: "flex",
           flexDirection: "column",
-          gap: 10,
+          gap: 12,
         }}
       >
         <input
@@ -125,7 +136,6 @@ export default function Contact() {
             border: "none",
             fontWeight: 600,
             cursor: loading ? "not-allowed" : "pointer",
-            transition: "0.2s ease",
           }}
         >
           {loading ? "Submitting..." : "Submit"}
@@ -134,9 +144,9 @@ export default function Contact() {
         {status && (
           <div
             style={{
-              marginTop: 2,
-              padding: 5,
-              borderRadius: 5,
+              marginTop: 10,
+              padding: 10,
+              borderRadius: 8,
               backgroundColor:
                 status.type === "success" ? "#e6fffa" : "#ffe6e6",
               color: status.type === "success" ? "#065f46" : "#8b0000",
@@ -146,25 +156,6 @@ export default function Contact() {
           </div>
         )}
       </form>
-
-      <div
-        style={{
-          marginTop: 5,
-          paddingTop: 5,
-          borderTop: "1px solid #e5e7eb",
-          fontSize: 14,
-          color: "#666",
-        }}
-      >
-        <p>
-          <strong>Email:</strong>{" "}
-          <a href="mailto:irg@auw.edu.bd">irg@auw.edu.bd</a>
-        </p>
-        <p>
-          <strong>Location:</strong> Asian University for Women,
-          Chattogram, Bangladesh
-        </p>
-      </div>
     </div>
   );
 }
@@ -174,5 +165,4 @@ const inputStyle: React.CSSProperties = {
   borderRadius: 8,
   border: "1px solid #d1d5db",
   fontSize: 14,
-  outline: "none",
 };
