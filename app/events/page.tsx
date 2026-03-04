@@ -1,6 +1,8 @@
 const events = [
-  { date: "2026-02-15", title: "IRG Seminar: Topic (Add)", place: "AUW Campus / Online" },
+  { date: "2026-03-15", title: "IRG Seminar: Topic (Add)", place: "AUW Campus / Online" },
   { date: "2026-03-01", title: "Workshop: Python for Research (Add)", place: "AMDS Lab" },
+
+
 ];
 
 export default function Events() {
@@ -8,7 +10,7 @@ export default function Events() {
     <div style={{ padding: "20px 20px", backgroundColor: "#bfc22f", borderRadius: 14, maxWidth: 1350, margin: "0 auto" }}>
       <h1>Events</h1>
       <p style={{ lineHeight: 1.8, maxWidth: 900 }}>
-        Seminars, workshops, reading groups, student presentations, and special talks.
+        Seminars, workshops, reading groups, student presentations, and special talks(This page is under construction).
       </p>
 
       <div style={{ marginTop: 14, display: "grid", gap: 12, padding: 14, borderRadius: 14 }}>
