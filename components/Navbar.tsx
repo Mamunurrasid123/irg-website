@@ -8,7 +8,7 @@ const nav = [
   { href: "/publications", label: "Publications" },
   { href: "/events", label: "Events" },
    { href: "/blog", label: "IRG Blog" },
-  { href: "/games/tic-tac-toe", label: "Interactive Projects" },
+  { href: "/games/tic-tac-toe", label: "Projects" },
     { href: "/contact", label: "Contact" },
 ];
 

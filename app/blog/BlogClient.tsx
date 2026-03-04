@@ -81,7 +81,7 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
             <div
               key={post.slug}
               style={{
-                border: "1px solid #e5e7eb",
+                border: "1px solid #aec0e5",
                 borderRadius: 14,
                 padding: 18,
                 backgroundColor: "#f4f4b5",
@@ -125,7 +125,7 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
                 <div
                   style={{
                     marginTop: 16,
-                    borderTop: "1px solid #e5e7eb",
+                    borderTop: "1px solid #4772c7",
                     paddingTop: 14,
                   }}
                 >

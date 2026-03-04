@@ -71,14 +71,13 @@ export const members: Member[] = [
   },
   {
     slug: "faculty-co-lead-3",
-    name: "Dr. Md Junayed Nayem",
-    role: "Co-Lead",
+    name: "Dr Md Junayed Nayeem",
+    role: "Lead",
     affiliation: "Asian University for Women (AUW)",
     interests: [
-      "Machine Learning",
-      "Applied Data Science"
+      "Epidemiological factors leading to Cardiovascular diseases, Pulmonary hypertension, and Tyrosine kinase receptors in prostate cancer and breast cancer"
     ],
-    photo: "/members/placeholder.png",
+    photo: "/members/junayed.jpeg",
     bio:
       "Researcher contributing to interdisciplinary initiatives across AI, education, and applied analytics.",
     links: [
@@ -89,17 +88,17 @@ export const members: Member[] = [
   // Keep them SHORT — this is how top labs display students.
 
   {
-    slug: "sadia-akter",
-    name: "Sadia Akter",
+    slug: "s1",
+    name: "Student",
     role: "Student Researcher",
-    program: "UG 1-1",
-    major: "Mathematics & Data Science",
+    program: "UG 1.3",
+    major: "Applied Mathematics & Data Science",
     photo: "/members/placeholder.png",
   },
 
   {
-    slug: "fatima-noor",
-    name: "Fatima Noor",
+    slug: "s2",
+    name: "Student",
     role: "Student Researcher",
     program: "UG 2-1",
     major: "Computer Science",
@@ -107,8 +106,8 @@ export const members: Member[] = [
   },
 
   {
-    slug: "nabila-islam",
-    name: "Nabila Islam",
+    slug: "s3",
+    name: "Student",
     role: "Student Researcher",
     program: "UG 3-2",
     major: "Economics",
@@ -116,12 +115,48 @@ export const members: Member[] = [
   },
 
   {
-    slug: "amina-khatun",
-    name: "Amina Khatun",
+    slug: "s4",
+    name: "Student",
     role: "Student Researcher",
     program: "UG 2-2",
     major: "Environmental Science",
     photo: "/members/placeholder.png",
   }
+,
 
+  {
+    slug: "s5",
+    name: "Student",
+    role: "Student Researcher",
+    program: "UG 2-2",
+    major: "Biological Science",
+    photo: "/members/placeholder.png",
+  },
+
+  {
+    slug: "s6",
+    name: "Student",
+    role: "Student Researcher",
+    program: "UG 2-2",
+    major: "Public Health",
+    photo: "/members/placeholder.png",
+  },
+
+  {
+    slug: "s7",
+    name: "Student",
+    role: "Student Researcher",
+    program: "UG 2-2",
+    major: "Education",
+    photo: "/members/placeholder.png",
+  },
+
+  {
+    slug: "s8",
+    name: "Student",
+    role: "Student Researcher",
+    program: "UG 2-2",
+    major: "PPE",
+    photo: "/members/placeholder.png",
+  }
 ];
