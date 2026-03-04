@@ -7,9 +7,9 @@ const nav = [
   { href: "/members", label: "Teams" },
   { href: "/publications", label: "Publications" },
   { href: "/events", label: "Events" },
-  { href: "/contact", label: "Contact" },
-    // 👇 Add this
+   { href: "/blog", label: "IRG Blog" },
   { href: "/games/tic-tac-toe", label: "Interactive Projects" },
+    { href: "/contact", label: "Contact" },
 ];
 
 export default function Navbar() {

@@ -5,7 +5,7 @@ const events = [
 
 export default function Events() {
   return (
-    <div style={{ padding: "20px 20px", backgroundColor: "#cde4c7", borderRadius: 14, maxWidth: 1350, margin: "0 auto" }}>
+    <div style={{ padding: "20px 20px", backgroundColor: "#bfc22f", borderRadius: 14, maxWidth: 1350, margin: "0 auto" }}>
       <h1>Events</h1>
       <p style={{ lineHeight: 1.8, maxWidth: 900 }}>
         Seminars, workshops, reading groups, student presentations, and special talks.

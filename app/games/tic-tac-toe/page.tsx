@@ -214,7 +214,7 @@ export default function TicTacToe() {
       ? "linear-gradient(145deg,#d9ffd9,#bff0bf)"
       : "linear-gradient(145deg,#f0f0f0,#dcdcdc)",
     boxShadow: win
-      ? "5px 5px 10px rgba(0,0,0,.12), -5px -5px 10px rgba(241, 212, 25, 0.9)"
+      ? "5px 5px 10px rgba(195, 232, 13, 0.12), -5px -5px 10px rgba(241, 212, 25, 0.9)"
       : "6px 6px 12px #eee12b, -6px -6px 12px #e7d90b",
     transition: "transform .12s ease",
   });
@@ -251,11 +251,11 @@ export default function TicTacToe() {
             }}
           >
             <div style={{ textAlign: "center" }}>
-              <div style={{ fontSize: 36, fontWeight: 1000 }}>🎊 Victory! 🎊</div>
-              <div style={{ marginTop: 8, fontWeight: 900, opacity: 0.85 }}>
+              <div style={{ fontSize: 36, fontWeight: 1000,background:"#2563eb" }}>🎊 Victory! 🎊</div>
+              <div style={{ marginTop: 8, fontWeight: 1800, opacity: 0.85,background:"#2563eb" }}>
                 {winner === "X" ? "X wins!" : "O wins!"}
               </div>
-              <div style={{ marginTop: 10, fontSize: 24 }}>🎉 🎉 🎉</div>
+              <div style={{ marginTop: 10, fontSize: 24,background:"#2563eb" }}>🎉 🎉 🎉</div>
             </div>
           </div>
         )}
