@@ -9,6 +9,7 @@ const nav = [
   { href: "/events", label: "Events" },
    { href: "/blog", label: "IRG Blog" },
   { href: "/games/tic-tac-toe", label: "Projects" },
+  { href: "/tools", label: "Services" },
     { href: "/contact", label: "Contact" },
 ];
 
