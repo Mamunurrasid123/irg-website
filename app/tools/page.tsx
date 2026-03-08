@@ -18,6 +18,7 @@ export default function ToolsPage() {
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
             gap: 18,
+            alignItems: "stretch",
           }}
         >
           {tools.map((tool) => (
@@ -27,11 +28,20 @@ export default function ToolsPage() {
                 border: "1px solid var(--border)",
                 borderRadius: 16,
                 padding: 20,
-                background:"rgba(240, 217, 14, 0.81)",
+                background: "rgba(240, 217, 14, 0.81)",
                 boxShadow: "0 4px 14px rgba(223, 64, 64, 0.66)",
+                display: "flex",
+                flexDirection: "column",
+                height: "100%",
               }}
             >
-              <h2 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: 10 }}>
+              <h2
+                style={{
+                  fontSize: "1.1rem",
+                  fontWeight: 700,
+                  marginBottom: 10,
+                }}
+              >
                 {tool.title}
               </h2>
 
@@ -47,20 +57,23 @@ export default function ToolsPage() {
                 ))}
               </ul>
 
-              <Link
-                href={tool.href}
-                style={{
-                  display: "inline-block",
-                  padding: "10px 14px",
-                  borderRadius: 10,
-                  textDecoration: "none",
-                  border: "1px solid var(--border)",
-                  fontWeight: 600,
-                  background: "rgba(223, 64, 64, 0.66)",
-                }}
-              >
-                Open Tool
-              </Link>
+              <div style={{ marginTop: "auto" }}>
+                <Link
+                  href={tool.href}
+                  style={{
+                    display: "inline-block",
+                    padding: "10px 14px",
+                    borderRadius: 10,
+                    textDecoration: "none",
+                    border: "1px solid var(--border)",
+                    fontWeight: 600,
+                    background: "rgba(223, 64, 64, 0.66)",
+                    color: "white",
+                  }}
+                >
+                  Open Tool
+                </Link>
+              </div>
             </div>
           ))}
         </div>
