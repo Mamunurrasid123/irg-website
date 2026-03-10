@@ -3,7 +3,7 @@ import Link from "next/link";
 import { members } from "../data";
 import { notFound } from "next/navigation";
 
-// ✅ REQUIRED for output: 'export' (GitHub Pages)
+// ✅ REQUIRED for static generation
 export function generateStaticParams() {
   return members.map((m) => ({
     slug: m.slug,
@@ -13,13 +13,16 @@ export function generateStaticParams() {
 // Prevent unknown slugs
 export const dynamicParams = false;
 
-export default function MemberProfile({
+export default async function MemberProfile({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  // ✅ Await params first
+  const { slug: rawSlug } = await params;
+
   // ✅ Safe slug handling
-  const slug = decodeURIComponent(params.slug).toLowerCase().trim();
+  const slug = decodeURIComponent(rawSlug).toLowerCase().trim();
 
   const member = members.find(
     (m) => m.slug.toLowerCase().trim() === slug
