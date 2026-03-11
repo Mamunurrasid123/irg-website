@@ -11,7 +11,7 @@ export default function MembersPage() {
   const students = members.filter((m) => m.program);
 
   return (
-    <div>
+    <div style={{ maxWidth: 1200, margin: "0 auto", padding: 32 }}>
       <section className="hero">
         <h1 className="h1">Members</h1>
         <p className="p" style={{ maxWidth: 900 }}>
@@ -21,7 +21,15 @@ export default function MembersPage() {
       </section>
 
       <section className="section">
-        <h2 className="h2" style={{ marginBottom: 16 }}>
+        <h2
+          className="h2"
+          style={{
+            marginBottom: 16,
+            color: "#e8f011",
+            borderBottom: "2px solid #e5e7eb",
+            paddingBottom: 8,
+          }}
+        >
           Faculty
         </h2>
 
@@ -33,7 +41,15 @@ export default function MembersPage() {
           }}
         >
           {faculty.map((m) => (
-            <article key={m.slug} className="card">
+            <article
+              key={m.slug}
+              className="card"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                height: "100%",
+              }}
+            >
               <div
                 style={{
                   display: "flex",
@@ -86,7 +102,16 @@ export default function MembersPage() {
                 </div>
               ) : null}
 
-              <Link href={`/members/${m.slug}`} className="btn btnPrimary">
+              <Link
+                href={`/members/${m.slug}`}
+                className="btn"
+                style={{
+                  marginTop: "auto",
+                  backgroundColor: "lightblue",
+                  textAlign: "center",
+                  display: "inline-block",
+                }}
+              >
                 View Profile
               </Link>
             </article>
@@ -95,7 +120,15 @@ export default function MembersPage() {
       </section>
 
       <section className="section">
-        <h2 className="h2" style={{ marginBottom: 16 }}>
+        <h2
+          className="h2"
+          style={{
+            marginBottom: 16,
+            borderBottom: "2px solid #e5e7eb",
+            paddingBottom: 8,
+            color: "#e8f011",
+          }}
+        >
           Student Researchers
         </h2>
 
@@ -107,7 +140,15 @@ export default function MembersPage() {
           }}
         >
           {students.map((m) => (
-            <article key={m.slug} className="card">
+            <article
+              key={m.slug}
+              className="card"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                height: "100%",
+              }}
+            >
               <div
                 style={{
                   display: "flex",
@@ -148,7 +189,16 @@ export default function MembersPage() {
                 </div>
               </div>
 
-              <Link href={`/members/${m.slug}`} className="btn">
+              <Link
+                href={`/members/${m.slug}`}
+                className="btn"
+                style={{
+                  marginTop: "auto",
+                  backgroundColor: "var(--primary)",
+                  textAlign: "center",
+                  display: "inline-block",
+                }}
+              >
                 View Profile
               </Link>
             </article>
