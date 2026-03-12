@@ -560,7 +560,7 @@ export default function ExcelSummaryPage() {
     [columns, numericColumns]
   );
 
-  const previewRows = useMemo(() => data.slice(0, 8), [data]);
+  const previewRows = useMemo(() => data.slice(0, 100000), [data]);
 
   const totalMissing = useMemo(() => {
     let m = 0;
