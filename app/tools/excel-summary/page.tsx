@@ -232,50 +232,31 @@ function getCategoryCounts(data: RowData[], column: string) {
     map.set(key, (map.get(key) ?? 0) + 1);
   });
 
-  return Array.from(map.entries())
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 12);
+  return Array.from(map.entries()).sort((a, b) => {
+    if (b[1] !== a[1]) return b[1] - a[1];
+    return a[0].localeCompare(b[0], undefined, { numeric: true });
+  });
 }
 
-function buildFrequency(values: number[], bins: number): FreqRow[] {
-  if (!values.length || bins < 1) return [];
+function buildValueFrequency(values: number[]): FreqRow[] {
+  if (!values.length) return [];
 
-  const min = Math.min(...values);
-  const max = Math.max(...values);
-
-  if (min === max) {
-    return [
-      {
-        label: `${min.toFixed(2)} - ${max.toFixed(2)}`,
-        lower: min,
-        upper: max,
-        frequency: values.length,
-        cumulative: values.length,
-      },
-    ];
-  }
-
-  const width = (max - min) / bins;
-  const counts = new Array(bins).fill(0);
-
+  const map = new Map<number, number>();
   values.forEach((v) => {
-    let idx = Math.floor((v - min) / width);
-    if (idx >= bins) idx = bins - 1;
-    counts[idx] += 1;
+    map.set(v, (map.get(v) ?? 0) + 1);
   });
+
+  const sorted = Array.from(map.entries()).sort((a, b) => a[0] - b[0]);
 
   let cumulative = 0;
 
-  return counts.map((f, i) => {
-    const lower = min + i * width;
-    const upper = i === bins - 1 ? max : min + (i + 1) * width;
-    cumulative += f;
-
+  return sorted.map(([value, frequency]) => {
+    cumulative += frequency;
     return {
-      label: `${lower.toFixed(2)} - ${upper.toFixed(2)}`,
-      lower,
-      upper,
-      frequency: f,
+      label: String(value),
+      lower: value,
+      upper: value,
+      frequency,
       cumulative,
     };
   });
@@ -383,7 +364,9 @@ function cleanDataset(input: RowData[]) {
     return numericCount / values.length >= 0.6;
   });
 
-  const categoricalColumns = allColumns.filter((col) => !numericColumns.includes(col));
+  const categoricalColumns = allColumns.filter(
+    (col) => !numericColumns.includes(col)
+  );
 
   const numericFillMap = new Map<string, number>();
   numericColumns.forEach((col) => {
@@ -550,23 +533,29 @@ export default function ExcelSummaryPage() {
     return Array.from(set);
   }, [data]);
 
-  const numericColumns = useMemo(
-    () => columns.filter((c) => data.some((row) => isNumericValue(row[c]))),
-    [columns, data]
-  );
+  const numericColumns = useMemo(() => {
+    return columns.filter((col) => {
+      const values = data.map((row) => row[col]).filter((v) => !isMissing(v));
+      if (!values.length) return false;
+      const numericCount = values.filter((v) => isNumericValue(v)).length;
+      return numericCount / values.length >= 0.6;
+    });
+  }, [columns, data]);
 
-  const categoricalColumns = useMemo(
-    () => columns.filter((c) => !numericColumns.includes(c)),
-    [columns, numericColumns]
-  );
+  const categoryLikeColumns = useMemo(() => {
+    return columns.filter((col) => {
+      const values = data
+        .map((row) => row[col])
+        .filter((v) => !isMissing(v))
+        .map((v) => String(v).trim())
+        .filter(Boolean);
 
-  const previewRows = useMemo(() => data.slice(0, 100000), [data]);
+      return values.length > 0;
+    });
+  }, [columns, data]);
 
-  const totalMissing = useMemo(() => {
-    let m = 0;
-    data.forEach((row) => columns.forEach((c) => isMissing(row[c]) && m++));
-    return m;
-  }, [data, columns]);
+  const previewColumns = useMemo(() => columns, [columns]);
+  const previewRows = useMemo(() => data, [data]);
 
   const summaryRows: SummaryRow[] = useMemo(() => {
     return columns.map((c) => {
@@ -592,8 +581,8 @@ export default function ExcelSummaryPage() {
   );
 
   const freqRows = useMemo(
-    () => buildFrequency(selectedNumericValues, bins),
-    [selectedNumericValues, bins]
+    () => buildValueFrequency(selectedNumericValues),
+    [selectedNumericValues]
   );
 
   const vennCounts = useMemo(() => {
@@ -787,8 +776,19 @@ export default function ExcelSummaryPage() {
                 title: { ...commonOptions.plugins.title, text: `Bar Chart: ${primaryColumn}` },
               },
               scales: {
-                x: { ticks: { color: "#111827" } },
-                y: { beginAtZero: true, min: 0, ticks: { color: "#111827" } },
+                x: {
+                  ticks: {
+                    color: "#111827",
+                    maxRotation: 90,
+                    minRotation: 45,
+                    autoSkip: false,
+                  },
+                },
+                y: {
+                  beginAtZero: true,
+                  min: 0,
+                  ticks: { color: "#111827" },
+                },
               },
             }}
           />
@@ -836,7 +836,7 @@ export default function ExcelSummaryPage() {
               labels: freqRows.map((r) => r.label),
               datasets: [
                 {
-                  label: chartType === "histogram" ? "Histogram" : "Frequency Distribution",
+                  label: chartType === "histogram" ? "All Values Frequency" : "Frequency Distribution",
                   data: freqRows.map((r) => r.frequency),
                   backgroundColor: freqRows.map((_, i) => palette[i % palette.length]),
                   borderColor: freqRows.map((_, i) => borderPalette[i % borderPalette.length]),
@@ -850,11 +850,14 @@ export default function ExcelSummaryPage() {
                 ...commonOptions.plugins,
                 title: {
                   ...commonOptions.plugins.title,
-                  text: `${chartType === "histogram" ? "Histogram" : "Frequency Distribution"}: ${primaryColumn}`,
+                  text:
+                    chartType === "histogram"
+                      ? `Histogram-like All Values Chart: ${primaryColumn}`
+                      : `Frequency Distribution: ${primaryColumn}`,
                 },
               },
               scales: {
-                x: { ticks: { color: "#111827" } },
+                x: { ticks: { color: "#111827", maxRotation: 90, minRotation: 45, autoSkip: false } },
                 y: { beginAtZero: true, min: 0, ticks: { color: "#111827" } },
               },
             }}
@@ -889,7 +892,7 @@ export default function ExcelSummaryPage() {
                 title: { ...commonOptions.plugins.title, text: `Ogive: ${primaryColumn}` },
               },
               scales: {
-                x: { ticks: { color: "#111827" } },
+                x: { ticks: { color: "#111827", maxRotation: 90, minRotation: 45, autoSkip: false } },
                 y: { beginAtZero: true, min: 0, ticks: { color: "#111827" } },
               },
             }}
@@ -998,7 +1001,7 @@ export default function ExcelSummaryPage() {
     }
 
     if (chartType === "area" || chartType === "spline") {
-      const vals = selectedNumericValues.slice(0, 40);
+      const vals = selectedNumericValues;
 
       return vals.length ? (
         <div style={{ height: 420 }}>
@@ -1031,7 +1034,7 @@ export default function ExcelSummaryPage() {
                 },
               },
               scales: {
-                x: { ticks: { color: "#111827" } },
+                x: { ticks: { color: "#111827", maxRotation: 90, minRotation: 45, autoSkip: false } },
                 y: { beginAtZero: true, min: 0, ticks: { color: "#111827" } },
               },
             }}
@@ -1041,7 +1044,7 @@ export default function ExcelSummaryPage() {
     }
 
     if (chartType === "combo") {
-      const vals = selectedNumericValues.slice(0, 20);
+      const vals = selectedNumericValues;
 
       const comboData = {
         labels: vals.map((_, i) => `Row ${i + 1}`),
@@ -1079,7 +1082,7 @@ export default function ExcelSummaryPage() {
                 title: { ...commonOptions.plugins.title, text: `Combo Chart: ${primaryColumn}` },
               },
               scales: {
-                x: { ticks: { color: "#111827" } },
+                x: { ticks: { color: "#111827", maxRotation: 90, minRotation: 45, autoSkip: false } },
                 y: { beginAtZero: true, min: 0, ticks: { color: "#111827" } },
               },
             }}
@@ -1098,7 +1101,6 @@ export default function ExcelSummaryPage() {
                   isNumericValue(r[yColumn]) &&
                   isNumericValue(r[sizeColumn])
               )
-              .slice(0, 60)
               .map((r) => ({
                 x: Number(r[xColumn]),
                 y: Number(r[yColumn]),
@@ -1147,7 +1149,7 @@ export default function ExcelSummaryPage() {
     }
 
     if (chartType === "radar") {
-      const rows = primaryColumn ? getCategoryCounts(data, primaryColumn).slice(0, 8) : [];
+      const rows = primaryColumn ? getCategoryCounts(data, primaryColumn) : [];
 
       return rows.length ? (
         <div style={{ height: 420 }}>
@@ -1322,7 +1324,16 @@ export default function ExcelSummaryPage() {
               >
                 <select
                   value={chartType}
-                  onChange={(e) => setChartType(e.target.value as ChartType)}
+                  onChange={(e) => {
+                    setChartType(e.target.value as ChartType);
+                    setPrimaryColumn("");
+                    setXColumn("");
+                    setYColumn("");
+                    setSizeColumn("");
+                    setVennA("");
+                    setVennB("");
+                    setVennC("");
+                  }}
                   style={selectStyle}
                 >
                   <option value="bar">Bar Chart</option>
@@ -1344,7 +1355,7 @@ export default function ExcelSummaryPage() {
                 {["bar", "pie", "radar"].includes(chartType) && (
                   <select value={primaryColumn} onChange={(e) => setPrimaryColumn(e.target.value)} style={selectStyle}>
                     <option value="">Select categorical column</option>
-                    {categoricalColumns.map((c) => (
+                    {categoryLikeColumns.map((c) => (
                       <option key={c} value={c}>{c}</option>
                     ))}
                   </select>
@@ -1357,20 +1368,6 @@ export default function ExcelSummaryPage() {
                       <option key={c} value={c}>{c}</option>
                     ))}
                   </select>
-                )}
-
-                {["histogram", "frequency", "ogive"].includes(chartType) && (
-                  <input
-                    type="number"
-                    min={3}
-                    max={20}
-                    value={bins}
-                    onChange={(e) =>
-                      setBins(Math.max(3, Math.min(20, Number(e.target.value) || 6)))
-                    }
-                    style={selectStyle}
-                    placeholder="Bins"
-                  />
                 )}
 
                 {chartType === "scatter" && (
@@ -1442,6 +1439,12 @@ export default function ExcelSummaryPage() {
                 )}
               </div>
 
+              {["histogram", "frequency", "ogive"].includes(chartType) && primaryColumn && (
+                <div style={{ marginBottom: 10, color: "#374151", fontSize: 14 }}>
+                  Total numeric rows used: <strong>{selectedNumericValues.length}</strong>
+                </div>
+              )}
+
               <div style={chartCardStyle}>{renderChart()}</div>
             </section>
 
@@ -1451,7 +1454,7 @@ export default function ExcelSummaryPage() {
                 <table style={tableStyle}>
                   <thead>
                     <tr>
-                      {columns.map((c) => (
+                      {previewColumns.map((c) => (
                         <th key={c} style={thStyle}>{c}</th>
                       ))}
                     </tr>
@@ -1459,7 +1462,7 @@ export default function ExcelSummaryPage() {
                   <tbody>
                     {previewRows.map((row, i) => (
                       <tr key={i}>
-                        {columns.map((c) => (
+                        {previewColumns.map((c) => (
                           <td key={c} style={tdStyle}>{String(row[c] ?? "")}</td>
                         ))}
                       </tr>
@@ -1548,13 +1551,16 @@ const selectStyle: React.CSSProperties = {
 
 const tableWrapStyle: React.CSSProperties = {
   overflowX: "auto",
+  overflowY: "auto",
+  maxHeight: 700,
   background: "#ffffff",
   border: "1px solid #e5e7eb",
   borderRadius: 12,
 };
 
 const tableStyle: React.CSSProperties = {
-  width: "100%",
+  width: "max-content",
+  minWidth: "100%",
   borderCollapse: "collapse",
   fontSize: 14,
 };
@@ -1565,10 +1571,15 @@ const thStyle: React.CSSProperties = {
   borderBottom: "1px solid #e5e7eb",
   background: "#f9fafb",
   color: "#111827",
+  whiteSpace: "nowrap",
+  position: "sticky",
+  top: 0,
+  zIndex: 1,
 };
 
 const tdStyle: React.CSSProperties = {
   padding: 12,
   borderBottom: "1px solid #f1f5f9",
   color: "#111827",
+  whiteSpace: "nowrap",
 };
