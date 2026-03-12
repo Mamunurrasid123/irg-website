@@ -15,7 +15,7 @@ export const tools = [
     title: "Regression Tool",
     description:
       "Run regression analysis directly from uploaded datasets by selecting dependent and independent variables.",
-    href: "/tools",
+     href: "/tools/regression",
     features: [
       "Linear regression analysis",
       "Variable selection interface",
