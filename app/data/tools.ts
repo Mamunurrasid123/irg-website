@@ -226,5 +226,16 @@ export const tools = [
       "Column format checking",
       "Cleaner, analysis-ready datasets",
     ],
-  },
+  },{
+  title: "Scientific Calculator",
+  description:
+    "Perform advanced mathematical calculations including trigonometric, logarithmic, exponential, and algebraic operations with a clean and interactive scientific calculator.",
+  href: "/tools/scientific-calculator",
+  features: [
+    "Arithmetic and scientific operations",
+    "Trigonometric and logarithmic functions",
+    "Degree and radian modes",
+    "Clean, interactive, and well-designed interface",
+  ],
+}
 ];
