@@ -3,7 +3,7 @@ import { tools } from "../data/tools";
 
 export default function ToolsPage() {
   return (
-    <main className="container" style={{ padding: "40px 18px" }}>
+    <main className="container" style={{ padding: "40px 18px",background: "rgba(240, 217, 14, 0.81)", borderRadius: 16 }}>
       <div style={{ maxWidth: 1000, margin: "0 auto" }}>
         <h1 style={{ fontSize: "2rem", fontWeight: 800, marginBottom: 12 }}>
           IRG Open Research Tools

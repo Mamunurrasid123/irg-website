@@ -12,12 +12,17 @@
     "@emailjs/browser": "^4.4.1",
     "chart.js": "^4.5.1",
     "exceljs": "^4.4.0",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^4.2.0",
+    "jstat": "^1.9.6",
     "next": "16.1.6",
     "nodemailer": "^8.0.1",
     "papaparse": "^5.5.3",
     "react": "19.2.3",
     "react-chartjs-2": "^5.3.1",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "recharts": "^3.8.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
