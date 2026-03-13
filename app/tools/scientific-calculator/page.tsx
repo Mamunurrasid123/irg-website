@@ -51,49 +51,55 @@ function sanitizeExpression(expr: string): string {
     .replace(/÷/g, "/")
     .replace(/π/g, "PI")
     .replace(/\be\b/g, "E_CONST")
-    .replace(/√\(/g, "sqrt(")
     .replace(/\^/g, "**");
 }
 
 function transformFunctions(expr: string, angleMode: AngleMode): string {
   let s = sanitizeExpression(expr);
 
-  const wrapTrig = (name: string, inner: string) =>
-    `${name}(toRad(${inner}))`;
-  const wrapInvTrig = (name: string, inner: string) =>
-    `fromRad(${name}(${inner}))`;
+  // Inverse trig first, then direct trig
+  s = s.replace(/\basin\(/g, "ASIN(");
+  s = s.replace(/\bacos\(/g, "ACOS(");
+  s = s.replace(/\batan\(/g, "ATAN(");
 
-  s = s.replace(/sin\(([^()]*(?:\([^()]*\)[^()]*)*)\)/g, (_, inner) =>
-    wrapTrig("Math.sin", inner)
-  );
-  s = s.replace(/cos\(([^()]*(?:\([^()]*\)[^()]*)*)\)/g, (_, inner) =>
-    wrapTrig("Math.cos", inner)
-  );
-  s = s.replace(/tan\(([^()]*(?:\([^()]*\)[^()]*)*)\)/g, (_, inner) =>
-    wrapTrig("Math.tan", inner)
-  );
+  s = s.replace(/\bsin\(/g, "SIN(");
+  s = s.replace(/\bcos\(/g, "COS(");
+  s = s.replace(/\btan\(/g, "TAN(");
 
-  s = s.replace(/asin\(([^()]*(?:\([^()]*\)[^()]*)*)\)/g, (_, inner) =>
-    wrapInvTrig("Math.asin", inner)
-  );
-  s = s.replace(/acos\(([^()]*(?:\([^()]*\)[^()]*)*)\)/g, (_, inner) =>
-    wrapInvTrig("Math.acos", inner)
-  );
-  s = s.replace(/atan\(([^()]*(?:\([^()]*\)[^()]*)*)\)/g, (_, inner) =>
-    wrapInvTrig("Math.atan", inner)
-  );
+  s = s.replace(/\bln\(/g, "LN(");
+  s = s.replace(/\blog\(/g, "LOG(");
+  s = s.replace(/\bsqrt\(/g, "SQRT(");
+  s = s.replace(/√\(/g, "SQRT(");
+  s = s.replace(/\babs\(/g, "ABS(");
+  s = s.replace(/\bexp\(/g, "EXP(");
 
-  s = s.replace(/ln\(([^()]*(?:\([^()]*\)[^()]*)*)\)/g, "Math.log($1)");
-  s = s.replace(/log\(([^()]*(?:\([^()]*\)[^()]*)*)\)/g, "Math.log10($1)");
-  s = s.replace(/sqrt\(([^()]*(?:\([^()]*\)[^()]*)*)\)/g, "Math.sqrt($1)");
-  s = s.replace(/abs\(([^()]*(?:\([^()]*\)[^()]*)*)\)/g, "Math.abs($1)");
-  s = s.replace(/exp\(([^()]*(?:\([^()]*\)[^()]*)*)\)/g, "Math.exp($1)");
+  // Replace function names with safe JS expressions
+  if (angleMode === "DEG") {
+    s = s.replace(/\bSIN\(/g, "Math.sin(toRad(");
+    s = s.replace(/\bCOS\(/g, "Math.cos(toRad(");
+    s = s.replace(/\bTAN\(/g, "Math.tan(toRad(");
 
-  s = s.replace(/(\d+|\([^()]+\)|PI|E_CONST)!/g, "fact($1)");
+    s = s.replace(/\bASIN\(/g, "fromRad(Math.asin(");
+    s = s.replace(/\bACOS\(/g, "fromRad(Math.acos(");
+    s = s.replace(/\bATAN\(/g, "fromRad(Math.atan(");
+  } else {
+    s = s.replace(/\bSIN\(/g, "Math.sin(");
+    s = s.replace(/\bCOS\(/g, "Math.cos(");
+    s = s.replace(/\bTAN\(/g, "Math.tan(");
 
-  if (angleMode === "RAD") {
-    s = s.replace(/toRad\(/g, "(").replace(/fromRad\(/g, "(");
+    s = s.replace(/\bASIN\(/g, "Math.asin(");
+    s = s.replace(/\bACOS\(/g, "Math.acos(");
+    s = s.replace(/\bATAN\(/g, "Math.atan(");
   }
+
+  s = s.replace(/\bLN\(/g, "Math.log(");
+  s = s.replace(/\bLOG\(/g, "Math.log10(");
+  s = s.replace(/\bSQRT\(/g, "Math.sqrt(");
+  s = s.replace(/\bABS\(/g, "Math.abs(");
+  s = s.replace(/\bEXP\(/g, "Math.exp(");
+
+  // Factorial for numbers, constants, or simple parenthesized expressions
+  s = s.replace(/(\d+(\.\d+)?|PI|E_CONST|\([^()]*\))!/g, "fact($1)");
 
   return s;
 }
@@ -123,7 +129,7 @@ function evaluateExpression(expr: string, angleMode: AngleMode): string {
       (x: number) => fromRadians(x, angleMode)
     );
 
-    return formatResult(value);
+    return formatResult(Number(value));
   } catch {
     return "Error";
   }
@@ -160,10 +166,7 @@ export default function ScientificCalculatorPage() {
     setResult(computed);
 
     if (computed !== "Error" && expression.trim()) {
-      setHistory((prev) => [
-        { expression, result: computed },
-        ...prev.slice(0, 11),
-      ]);
+      setHistory((prev) => [{ expression, result: computed }, ...prev.slice(0, 11)]);
       setExpression(computed);
     }
   };
@@ -177,10 +180,12 @@ export default function ScientificCalculatorPage() {
 
   const memoryRecall = () => append(String(memory));
   const memoryClear = () => setMemory(0);
+
   const memoryAdd = () => {
     const current = Number(evaluateExpression(expression || result, angleMode));
     if (Number.isFinite(current)) setMemory((m) => m + current);
   };
+
   const memorySubtract = () => {
     const current = Number(evaluateExpression(expression || result, angleMode));
     if (Number.isFinite(current)) setMemory((m) => m - current);
@@ -209,7 +214,7 @@ export default function ScientificCalculatorPage() {
       style={{
         background:
           "radial-gradient(circle at top left, #fff5cc 0%, #fff9e8 28%, #eef5ff 65%, #e8eefc 100%)",
-        padding: "60px 60px",
+        padding: "24px 16px",
       }}
     >
       <div className="calc-layout">
@@ -305,8 +310,7 @@ export default function ScientificCalculatorPage() {
                       fontWeight: 700,
                       fontSize: "0.74rem",
                       cursor: "pointer",
-                      background:
-                        angleMode === "DEG" ? "#FFC000" : "transparent",
+                      background: angleMode === "DEG" ? "#FFC000" : "transparent",
                       color: "#1a2232",
                     }}
                   >
@@ -321,8 +325,7 @@ export default function ScientificCalculatorPage() {
                       fontWeight: 700,
                       fontSize: "0.74rem",
                       cursor: "pointer",
-                      background:
-                        angleMode === "RAD" ? "#FFC000" : "transparent",
+                      background: angleMode === "RAD" ? "#FFC000" : "transparent",
                       color: "#1a2232",
                     }}
                   >
@@ -337,8 +340,7 @@ export default function ScientificCalculatorPage() {
             <div
               style={{
                 borderRadius: 16,
-                background:
-                  "linear-gradient(180deg, #0f172a 0%, #1f2937 100%)",
+                background: "linear-gradient(180deg, #0f172a 0%, #1f2937 100%)",
                 color: "#f8fafc",
                 padding: 14,
                 marginBottom: 14,
@@ -372,9 +374,7 @@ export default function ScientificCalculatorPage() {
                   marginTop: 4,
                   textAlign: "right",
                   color:
-                    livePreview && livePreview !== "Error"
-                      ? "#8de1a5"
-                      : "#c8d2e2",
+                    livePreview && livePreview !== "Error" ? "#8de1a5" : "#c8d2e2",
                   minHeight: 16,
                   fontWeight: 600,
                   fontSize: "0.72rem",
@@ -489,6 +489,7 @@ export default function ScientificCalculatorPage() {
                 <div>• log is base 10 and ln is natural logarithm.</div>
                 <div>• Use xʸ for powers and √ for roots.</div>
                 <div>• Factorial works for non-negative integers only.</div>
+                <div>• mod uses the JavaScript remainder operator.</div>
               </div>
             </div>
           </div>
