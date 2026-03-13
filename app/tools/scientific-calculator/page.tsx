@@ -207,10 +207,9 @@ export default function ScientificCalculatorPage() {
   return (
     <div
       style={{
-        minHeight: "100vh",
         background:
           "radial-gradient(circle at top left, #fff5cc 0%, #fff9e8 28%, #eef5ff 65%, #e8eefc 100%)",
-        padding: "12px",
+        padding: "60px 60px",
       }}
     >
       <div className="calc-layout">
