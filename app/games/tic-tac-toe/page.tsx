@@ -139,7 +139,12 @@ const PROJECTS: Project[] = [
       "Teaching and research integration",
       "Interactive showcase design",
     ],
-    technologies: ["React", "TypeScript", "Interactive UI", "Research Presentation"],
+    technologies: [
+      "React",
+      "TypeScript",
+      "Interactive UI",
+      "Research Presentation",
+    ],
     status: "Ready",
     outputLabel: "Research Preview",
   },
@@ -192,11 +197,11 @@ function minimax(board: Cell[], turn: Player): { score: number; index?: number }
     let best = moves[0];
     for (const m of moves) if (m.score > best.score) best = m;
     return best;
-  } else {
-    let best = moves[0];
-    for (const m of moves) if (m.score < best.score) best = m;
-    return best;
   }
+
+  let best = moves[0];
+  for (const m of moves) if (m.score < best.score) best = m;
+  return best;
 }
 
 function StatCard({
@@ -214,8 +219,9 @@ function StatCard({
         background: "rgba(255,255,255,0.9)",
         border: "1px solid rgba(255,255,255,0.85)",
         borderRadius: 18,
-        padding: 18,
+        padding: 16,
         boxShadow: "0 12px 28px rgba(0,0,0,0.08)",
+        minWidth: 0,
       }}
     >
       <div style={{ fontSize: "0.78rem", color: "#5b6577", fontWeight: 700 }}>
@@ -223,10 +229,11 @@ function StatCard({
       </div>
       <div
         style={{
-          fontSize: "1.7rem",
+          fontSize: "clamp(1.2rem, 4vw, 1.7rem)",
           fontWeight: 900,
           color: "#142033",
           marginTop: 6,
+          wordBreak: "break-word",
         }}
       >
         {value}
@@ -255,6 +262,7 @@ function StatusPill({ text }: { text: string }) {
         padding: "6px 11px",
         fontSize: "0.75rem",
         fontWeight: 800,
+        whiteSpace: "nowrap",
         ...styleMap[text],
       }}
     >
@@ -276,10 +284,11 @@ function PlaceholderPanel({
     <div
       style={{
         background: "rgba(255,255,255,0.82)",
-        borderRadius: 24,
-        padding: 24,
+        borderRadius: 22,
+        padding: 20,
         border: "1px solid rgba(255,255,255,0.85)",
         boxShadow: "0 16px 34px rgba(0,0,0,0.09)",
+        minWidth: 0,
       }}
     >
       <div
@@ -296,7 +305,18 @@ function PlaceholderPanel({
       >
         {outputLabel}
       </div>
-      <h3 style={{ marginTop: 0, marginBottom: 12, color: "#132033" }}>{title}</h3>
+
+      <h3
+        style={{
+          marginTop: 0,
+          marginBottom: 12,
+          color: "#132033",
+          wordBreak: "break-word",
+        }}
+      >
+        {title}
+      </h3>
+
       <p style={{ margin: 0, lineHeight: 1.8, color: "#4d5a70" }}>{text}</p>
 
       <div
@@ -312,9 +332,9 @@ function PlaceholderPanel({
           Suggested live integration
         </div>
         <div style={{ color: "#5a667b", lineHeight: 1.7, fontSize: "0.92rem" }}>
-          Replace this placeholder with your real project component. For example,
-          the scientific calculator, regression interface, Excel upload dashboard,
-          or p-value tool can be rendered here when selected.
+          Replace this placeholder with your real project component. For
+          example, the scientific calculator, regression interface, Excel upload
+          dashboard, or p-value tool can be rendered here when selected.
         </div>
       </div>
     </div>
@@ -406,12 +426,12 @@ function TicTacToeLab() {
   const status = winner
     ? `Winner: ${winner} 🎉`
     : draw
-    ? "Draw! 🤝"
-    : mode === "computer"
-    ? current === "X"
-      ? "Your turn (X)"
-      : "Computer thinking… (O)"
-    : `Turn: ${current}`;
+      ? "Draw! 🤝"
+      : mode === "computer"
+        ? current === "X"
+          ? "Your turn (X)"
+          : "Computer thinking… (O)"
+        : `Turn: ${current}`;
 
   const selectStyle: React.CSSProperties = {
     padding: "8px 10px",
@@ -419,6 +439,7 @@ function TicTacToeLab() {
     border: "1px solid #e7eb0c",
     fontWeight: 900,
     background: "white",
+    minWidth: 0,
   };
 
   const btnBase: React.CSSProperties = {
@@ -434,11 +455,12 @@ function TicTacToeLab() {
       style={{
         position: "relative",
         background: "rgba(255,255,255,0.86)",
-        borderRadius: 24,
-        padding: 22,
+        borderRadius: 22,
+        padding: 18,
         boxShadow: "0 18px 40px rgba(0,0,0,0.10)",
         border: "1px solid rgba(255,255,255,0.85)",
         overflow: "hidden",
+        minWidth: 0,
       }}
     >
       {celebrate && (
@@ -450,10 +472,20 @@ function TicTacToeLab() {
             display: "grid",
             placeItems: "center",
             zIndex: 10,
+            padding: 16,
           }}
         >
           <div style={{ textAlign: "center" }}>
-            <div style={{ fontSize: 36, fontWeight: 1000, background: "#2563eb", color: "#fff", padding: "6px 12px", borderRadius: 12 }}>
+            <div
+              style={{
+                fontSize: 28,
+                fontWeight: 1000,
+                background: "#2563eb",
+                color: "#fff",
+                padding: "6px 12px",
+                borderRadius: 12,
+              }}
+            >
               🎊 Victory! 🎊
             </div>
             <div
@@ -469,7 +501,7 @@ function TicTacToeLab() {
             >
               {winner === "X" ? "X wins!" : "O wins!"}
             </div>
-            <div style={{ marginTop: 10, fontSize: 24 }}>🎉 🎉 🎉</div>
+            <div style={{ marginTop: 10, fontSize: 22 }}>🎉 🎉 🎉</div>
           </div>
         </div>
       )}
@@ -483,8 +515,17 @@ function TicTacToeLab() {
           alignItems: "center",
         }}
       >
-        <div>
-          <h3 style={{ margin: 0, fontSize: 24, color: "#132033" }}>Tic-Tac-Toe AI Lab</h3>
+        <div style={{ minWidth: 0 }}>
+          <h3
+            style={{
+              margin: 0,
+              fontSize: "clamp(1.15rem, 4vw, 1.45rem)",
+              color: "#132033",
+              wordBreak: "break-word",
+            }}
+          >
+            Tic-Tac-Toe AI Lab
+          </h3>
           <div style={{ marginTop: 6, opacity: 0.75, fontSize: 13 }}>
             {mode === "computer"
               ? "Human = X • Computer = O"
@@ -492,8 +533,12 @@ function TicTacToeLab() {
           </div>
         </div>
 
-        <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
-          <select value={mode} onChange={(e) => setMode(e.target.value as Mode)} style={selectStyle}>
+        <div className="ttt-controls">
+          <select
+            value={mode}
+            onChange={(e) => setMode(e.target.value as Mode)}
+            style={selectStyle}
+          >
             <option value="computer">Vs Computer</option>
             <option value="human">Vs Human</option>
           </select>
@@ -546,50 +591,69 @@ function TicTacToeLab() {
       <div
         style={{
           marginTop: 16,
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 86px)",
-          gap: 12,
+          width: "100%",
+          display: "flex",
           justifyContent: "center",
         }}
       >
-        {board.map((cell, i) => {
-          const isWin = line?.includes(i) ?? false;
+        <div className="ttt-board">
+          {board.map((cell, i) => {
+            const isWin = line?.includes(i) ?? false;
 
-          return (
-            <button
-              key={i}
-              onClick={() => clickCell(i)}
-              style={{
-                height: 86,
-                width: 86,
-                fontSize: 34,
-                fontWeight: 900,
-                borderRadius: 18,
-                border: "none",
-                cursor: gameOver || locked ? "default" : "pointer",
-                background: isWin
-                  ? "linear-gradient(145deg,#d9ffd9,#bff0bf)"
-                  : "linear-gradient(145deg,#f0f0f0,#dcdcdc)",
-                boxShadow: isWin
-                  ? "5px 5px 10px rgba(195, 232, 13, 0.12), -5px -5px 10px rgba(241, 212, 25, 0.9)"
-                  : "6px 6px 12px #eee12b, -6px -6px 12px #e7d90b",
-                transition: "transform .12s ease",
-              }}
-              onMouseDown={(e) => (e.currentTarget.style.transform = "scale(0.97)")}
-              onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
-            >
-              {cell ?? ""}
-            </button>
-          );
-        })}
+            return (
+              <button
+                key={i}
+                onClick={() => clickCell(i)}
+                style={{
+                  width: "100%",
+                  aspectRatio: "1 / 1",
+                  fontSize: "clamp(1.4rem, 6vw, 2rem)",
+                  fontWeight: 900,
+                  borderRadius: 18,
+                  border: "none",
+                  cursor: gameOver || locked ? "default" : "pointer",
+                  background: isWin
+                    ? "linear-gradient(145deg,#d9ffd9,#bff0bf)"
+                    : "linear-gradient(145deg,#f0f0f0,#dcdcdc)",
+                  boxShadow: isWin
+                    ? "5px 5px 10px rgba(195, 232, 13, 0.12), -5px -5px 10px rgba(241, 212, 25, 0.9)"
+                    : "6px 6px 12px #eee12b, -6px -6px 12px #e7d90b",
+                  transition: "transform .12s ease",
+                }}
+                onMouseDown={(e) =>
+                  (e.currentTarget.style.transform = "scale(0.97)")
+                }
+                onMouseUp={(e) =>
+                  (e.currentTarget.style.transform = "scale(1)")
+                }
+              >
+                {cell ?? ""}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
-      <div style={{ marginTop: 18, display: "flex", justifyContent: "space-between", gap: 10, flexWrap: "wrap" }}>
-        <button onClick={resetGame} style={{ ...btnBase, background: "#2563eb", color: "white" }}>
+      <div
+        style={{
+          marginTop: 18,
+          display: "flex",
+          justifyContent: "space-between",
+          gap: 10,
+          flexWrap: "wrap",
+        }}
+      >
+        <button
+          onClick={resetGame}
+          style={{ ...btnBase, background: "#2563eb", color: "white" }}
+        >
           Restart
         </button>
 
-        <button onClick={resetGame} style={{ ...btnBase, background: "#dc2626", color: "white" }}>
+        <button
+          onClick={resetGame}
+          style={{ ...btnBase, background: "#dc2626", color: "white" }}
+        >
           Quit
         </button>
       </div>
@@ -605,6 +669,7 @@ export default function InteractiveResearchLabPage() {
   const [selectedProjectId, setSelectedProjectId] = useState("tic-tac-toe");
   const [search, setSearch] = useState("");
   const [activeFilter, setActiveFilter] = useState<"all" | ProjectType>("all");
+  const [showDirectory, setShowDirectory] = useState(false);
 
   const filteredProjects = useMemo(() => {
     return PROJECTS.filter((project) => {
@@ -645,30 +710,22 @@ export default function InteractiveResearchLabPage() {
       style={{
         minHeight: "100vh",
         background: "linear-gradient(135deg,#87CEEB,#FFD700)",
-        padding: 36,
+        padding: "14px 10px 24px",
       }}
     >
       <div style={{ maxWidth: 1380, margin: "0 auto" }}>
         <section
           style={{
             background: "rgba(255,255,255,0.84)",
-            borderRadius: 30,
-            padding: 26,
+            borderRadius: 22,
+            padding: 16,
             boxShadow: "0 20px 54px rgba(0,0,0,.18)",
             border: "1px solid rgba(255,255,255,0.82)",
-            marginBottom: 22,
+            marginBottom: 16,
           }}
         >
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "minmax(0, 1.4fr) minmax(320px, 0.8fr)",
-              gap: 20,
-              alignItems: "center",
-            }}
-            className="hero-grid"
-          >
-            <div>
+          <div className="hero-grid">
+            <div style={{ minWidth: 0 }}>
               <div
                 style={{
                   display: "inline-block",
@@ -687,7 +744,7 @@ export default function InteractiveResearchLabPage() {
               <h1
                 style={{
                   margin: "14px 0 10px",
-                  fontSize: "clamp(2rem, 4vw, 3.4rem)",
+                  fontSize: "clamp(1.65rem, 7vw, 3.2rem)",
                   lineHeight: 1.08,
                   color: "#132033",
                   letterSpacing: "-0.04em",
@@ -699,8 +756,8 @@ export default function InteractiveResearchLabPage() {
               <p
                 style={{
                   margin: 0,
-                  fontSize: "1rem",
-                  lineHeight: 1.8,
+                  fontSize: "0.95rem",
+                  lineHeight: 1.75,
                   color: "#48566b",
                   maxWidth: 820,
                 }}
@@ -714,9 +771,9 @@ export default function InteractiveResearchLabPage() {
               <div
                 style={{
                   display: "flex",
-                  gap: 10,
+                  gap: 8,
                   flexWrap: "wrap",
-                  marginTop: 18,
+                  marginTop: 16,
                 }}
               >
                 {["all", "game", "tool", "analysis", "research"].map((item) => {
@@ -728,13 +785,14 @@ export default function InteractiveResearchLabPage() {
                       style={{
                         border: "none",
                         borderRadius: 999,
-                        padding: "9px 14px",
+                        padding: "8px 13px",
                         fontWeight: 800,
                         cursor: "pointer",
                         background: active ? "#132033" : "rgba(255,255,255,0.92)",
                         color: active ? "#fff" : "#213047",
                         boxShadow: "0 8px 18px rgba(0,0,0,0.06)",
                         textTransform: "capitalize",
+                        fontSize: "0.9rem",
                       }}
                     >
                       {item}
@@ -744,13 +802,7 @@ export default function InteractiveResearchLabPage() {
               </div>
             </div>
 
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: 14,
-              }}
-            >
+            <div className="stats-grid">
               <StatCard
                 title="Projects"
                 value={String(PROJECTS.length)}
@@ -775,29 +827,44 @@ export default function InteractiveResearchLabPage() {
           </div>
         </section>
 
-        <section
-          style={{
-            display: "grid",
-            gridTemplateColumns: "360px minmax(0, 1fr)",
-            gap: 22,
-          }}
-          className="lab-layout"
-        >
+        <div className="mobile-directory-toggle-wrap">
+          <button
+            type="button"
+            onClick={() => setShowDirectory((prev) => !prev)}
+            style={{
+              width: "100%",
+              border: "none",
+              borderRadius: 16,
+              padding: "12px 14px",
+              fontWeight: 900,
+              background: "rgba(255,255,255,0.92)",
+              color: "#132033",
+              boxShadow: "0 12px 28px rgba(0,0,0,0.10)",
+              cursor: "pointer",
+              marginBottom: 14,
+            }}
+          >
+            {showDirectory ? "Hide Project Directory" : "Show Project Directory"}
+          </button>
+        </div>
+
+        <section className="lab-layout">
           <aside
+            className={`directory-panel ${showDirectory ? "open" : ""}`}
             style={{
               background: "rgba(255,255,255,0.84)",
-              borderRadius: 28,
-              padding: 20,
+              borderRadius: 22,
+              padding: 16,
               boxShadow: "0 20px 54px rgba(0,0,0,.18)",
               border: "1px solid rgba(255,255,255,0.82)",
               minWidth: 0,
               height: "fit-content",
             }}
           >
-            <div style={{ marginBottom: 16 }}>
+            <div style={{ marginBottom: 14 }}>
               <div
                 style={{
-                  fontSize: "1.18rem",
+                  fontSize: "1.05rem",
                   fontWeight: 900,
                   color: "#132033",
                 }}
@@ -841,11 +908,14 @@ export default function InteractiveResearchLabPage() {
                 return (
                   <button
                     key={project.id}
-                    onClick={() => setSelectedProjectId(project.id)}
+                    onClick={() => {
+                      setSelectedProjectId(project.id);
+                      setShowDirectory(false);
+                    }}
                     style={{
                       textAlign: "left",
-                      borderRadius: 18,
-                      padding: 16,
+                      borderRadius: 16,
+                      padding: 14,
                       border: active
                         ? "1px solid #132033"
                         : "1px solid rgba(0,0,0,0.08)",
@@ -856,6 +926,7 @@ export default function InteractiveResearchLabPage() {
                         ? "0 12px 24px rgba(19,32,51,0.10)"
                         : "0 8px 18px rgba(0,0,0,0.05)",
                       cursor: "pointer",
+                      minWidth: 0,
                     }}
                   >
                     <div
@@ -863,16 +934,18 @@ export default function InteractiveResearchLabPage() {
                         display: "flex",
                         justifyContent: "space-between",
                         gap: 8,
-                        alignItems: "center",
+                        alignItems: "flex-start",
                         marginBottom: 8,
+                        flexWrap: "wrap",
                       }}
                     >
                       <div
                         style={{
                           fontWeight: 900,
                           color: "#132033",
-                          fontSize: "0.98rem",
+                          fontSize: "0.96rem",
                           lineHeight: 1.35,
+                          minWidth: 0,
                         }}
                       >
                         {project.title}
@@ -929,8 +1002,8 @@ export default function InteractiveResearchLabPage() {
           <section
             style={{
               background: "rgba(255,255,255,0.84)",
-              borderRadius: 28,
-              padding: 22,
+              borderRadius: 22,
+              padding: 16,
               boxShadow: "0 20px 54px rgba(0,0,0,.18)",
               border: "1px solid rgba(255,255,255,0.82)",
               minWidth: 0,
@@ -938,11 +1011,11 @@ export default function InteractiveResearchLabPage() {
           >
             <div
               style={{
-                borderRadius: 22,
+                borderRadius: 20,
                 background:
                   "linear-gradient(135deg, rgba(139,0,0,0.08), rgba(255,192,0,0.12), rgba(135,206,235,0.10))",
-                padding: 22,
-                marginBottom: 20,
+                padding: 16,
+                marginBottom: 16,
                 border: "1px solid rgba(0,0,0,0.05)",
               }}
             >
@@ -950,7 +1023,7 @@ export default function InteractiveResearchLabPage() {
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
-                  gap: 16,
+                  gap: 14,
                   flexWrap: "wrap",
                   alignItems: "flex-start",
                 }}
@@ -974,9 +1047,10 @@ export default function InteractiveResearchLabPage() {
                   <h2
                     style={{
                       margin: 0,
-                      fontSize: "clamp(1.5rem, 3vw, 2.3rem)",
+                      fontSize: "clamp(1.25rem, 6vw, 2.1rem)",
                       lineHeight: 1.15,
                       color: "#132033",
+                      wordBreak: "break-word",
                     }}
                   >
                     {selectedProject.title}
@@ -986,7 +1060,7 @@ export default function InteractiveResearchLabPage() {
                     style={{
                       margin: "12px 0 0",
                       color: "#4c5a70",
-                      lineHeight: 1.8,
+                      lineHeight: 1.75,
                       maxWidth: 900,
                     }}
                   >
@@ -997,20 +1071,12 @@ export default function InteractiveResearchLabPage() {
                 <StatusPill text={selectedProject.status} />
               </div>
 
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: 18,
-                  marginTop: 18,
-                }}
-                className="meta-grid"
-              >
+              <div className="meta-grid" style={{ marginTop: 16 }}>
                 <div
                   style={{
                     background: "rgba(255,255,255,0.85)",
                     borderRadius: 18,
-                    padding: 16,
+                    padding: 14,
                     border: "1px solid rgba(255,255,255,0.86)",
                   }}
                 >
@@ -1023,7 +1089,14 @@ export default function InteractiveResearchLabPage() {
                   >
                     Key Features
                   </div>
-                  <ul style={{ margin: 0, paddingLeft: 18, lineHeight: 1.8, color: "#516076" }}>
+                  <ul
+                    style={{
+                      margin: 0,
+                      paddingLeft: 18,
+                      lineHeight: 1.8,
+                      color: "#516076",
+                    }}
+                  >
                     {selectedProject.features.map((feature) => (
                       <li key={feature}>{feature}</li>
                     ))}
@@ -1034,7 +1107,7 @@ export default function InteractiveResearchLabPage() {
                   style={{
                     background: "rgba(255,255,255,0.85)",
                     borderRadius: 18,
-                    padding: 16,
+                    padding: 14,
                     border: "1px solid rgba(255,255,255,0.86)",
                   }}
                 >
@@ -1115,15 +1188,47 @@ export default function InteractiveResearchLabPage() {
 
       <style jsx>{`
         .hero-grid {
-          grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.8fr);
+          display: grid;
+          grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.8fr);
+          gap: 18px;
+          align-items: center;
+        }
+
+        .stats-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
         }
 
         .lab-layout {
-          grid-template-columns: 360px minmax(0, 1fr);
+          display: grid;
+          grid-template-columns: 340px minmax(0, 1fr);
+          gap: 16px;
         }
 
         .meta-grid {
+          display: grid;
           grid-template-columns: 1fr 1fr;
+          gap: 16px;
+        }
+
+        .ttt-controls {
+          display: flex;
+          gap: 8px;
+          align-items: center;
+          flex-wrap: wrap;
+          width: 100%;
+        }
+
+        .ttt-board {
+          width: min(100%, 330px);
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 10px;
+        }
+
+        .mobile-directory-toggle-wrap {
+          display: none;
         }
 
         @media (max-width: 1180px) {
@@ -1132,15 +1237,45 @@ export default function InteractiveResearchLabPage() {
           }
         }
 
-        @media (max-width: 1050px) {
+        @media (max-width: 980px) {
           .lab-layout {
             grid-template-columns: 1fr;
+          }
+
+          .mobile-directory-toggle-wrap {
+            display: block;
+          }
+
+          .directory-panel {
+            display: none;
+          }
+
+          .directory-panel.open {
+            display: block;
+            margin-bottom: 14px;
           }
         }
 
         @media (max-width: 700px) {
+          .stats-grid,
           .meta-grid {
             grid-template-columns: 1fr;
+          }
+
+          .ttt-controls {
+            flex-direction: column;
+            align-items: stretch;
+          }
+
+          .ttt-controls select {
+            width: 100%;
+          }
+        }
+
+        @media (max-width: 520px) {
+          .ttt-board {
+            width: min(100%, 280px);
+            gap: 8px;
           }
         }
       `}</style>
