@@ -12,7 +12,7 @@ const nav = [
   { href: "/events", label: "Events" },
   { href: "/blog", label: "IRG Blog" },
   { href: "/games/tic-tac-toe", label: "Projects" },
-  { href: "/tools", label: "Services" },
+  { href: "/tools", label: "Research tools" },
   { href: "/scholarships", label: "Scholarships Info" },
   { href: "/contact", label: "Contact" },
 ];
@@ -114,7 +114,7 @@ export default function Navbar() {
               key={item.href}
               href={item.href}
               style={{
-                padding: "8px 10px",
+                padding: "0px 0px",
                 borderRadius: 10,
                 border: "1px solid transparent",
                 textDecoration: "none",
