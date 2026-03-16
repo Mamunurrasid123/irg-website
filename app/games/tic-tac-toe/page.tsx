@@ -195,12 +195,16 @@ function minimax(board: Cell[], turn: Player): { score: number; index?: number }
 
   if (turn === "O") {
     let best = moves[0];
-    for (const m of moves) if (m.score > best.score) best = m;
+    for (const m of moves) {
+      if (m.score > best.score) best = m;
+    }
     return best;
   }
 
   let best = moves[0];
-  for (const m of moves) if (m.score < best.score) best = m;
+  for (const m of moves) {
+    if (m.score < best.score) best = m;
+  }
   return best;
 }
 
@@ -332,9 +336,7 @@ function PlaceholderPanel({
           Suggested live integration
         </div>
         <div style={{ color: "#5a667b", lineHeight: 1.7, fontSize: "0.92rem" }}>
-          Replace this placeholder with your real project component. For
-          example, the scientific calculator, regression interface, Excel upload
-          dashboard, or p-value tool can be rendered here when selected.
+          Replace this placeholder with your real project component.
         </div>
       </div>
     </div>
@@ -596,7 +598,14 @@ function TicTacToeLab() {
           justifyContent: "center",
         }}
       >
-        <div className="ttt-board">
+        <div
+          style={{
+            width: "min(100%, 330px)",
+            display: "grid",
+            gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+            gap: 10,
+          }}
+        >
           {board.map((cell, i) => {
             const isWin = line?.includes(i) ?? false;
 
@@ -1220,13 +1229,6 @@ export default function InteractiveResearchLabPage() {
           width: 100%;
         }
 
-        .ttt-board {
-          width: min(100%, 330px);
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 10px;
-        }
-
         .mobile-directory-toggle-wrap {
           display: none;
         }
@@ -1269,13 +1271,6 @@ export default function InteractiveResearchLabPage() {
 
           .ttt-controls select {
             width: 100%;
-          }
-        }
-
-        @media (max-width: 520px) {
-          .ttt-board {
-            width: min(100%, 280px);
-            gap: 8px;
           }
         }
       `}</style>

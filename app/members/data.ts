@@ -24,8 +24,8 @@ export const members: Member[] = [
     affiliation: "Asian University for Women (AUW)",
     interests: ["Computational Mathematics", "AI, ML & Data Science"],
     email: "irg@auw.edu.bd",
-    photo: "/members/mamunur.jpg",
-    bio: "Dr. Md. Mamunur Rasid leads the Interdisciplinary Research Group (IRG), fostering collaborative research, mentoring students, and advancing computational mathematics and data-driven scientific discovery.",
+    photo: "/members/mamunur.jpeg",
+    bio: "Dr. Md. Mamunur Rasid is an Assistant Professor of Mathematics and Data Science at the Asian University for Women (AUW), Chattogram, Bangladesh. He earned his Ph.D. in Applied Mathematics from Kanazawa University, Japan. His research interests include applied mathematics, numerical analysis, differential equations, hydrodynamics, scientific computing, and data science, with growing interests in artificial intelligence and machine learning. Before joining AUW, he worked in Japan in system design and programming, applying machine learning and computer vision techniques to anomaly detection and image analysis. At AUW, he is actively involved in curriculum development, interdisciplinary research, and student mentorship, and is committed to promoting inclusive and high-quality education.",
     links: [
       {
         label: "ResearchGate",
@@ -50,7 +50,7 @@ export const members: Member[] = [
       "Game Theory",
     ],
     photo: "/members/anowar.jpeg",
-    bio: "Researcher contributing to interdisciplinary initiatives across AI, education, and applied analytics.",
+    bio: "Dr. Md. Anowar Hossain is an Assistant Professor of Mathematics at Asian University for women. Dr. Hossain is a distinguished researcher in the field of computational science. With a multidisciplinary academic foundation and a deep commitment to research excellence, Dr. Hossain has emerged as a leading expert in traffic flow dynamics, complex systems, and multi-agent simulation. Dr. Hossain earned his Ph.D. from Kyushu University, Japan. His doctoral thesis focused on mathematical modeling and multi-agent simulation of traffic flow dynamics, a theme that continues to be central to his research. Prior to that, he completed his Master of Science in Mathematics from the Bangladesh University of Engineering and Technology (BUET), where he ranked first in his class and was awarded a gold medal for his academic excellence. His undergraduate degree in Mathematics was completed at Pabna University of Science and Technology, where he graduated with distinction. Dr. Hossain has held several academic and research positions, including roles as a Postdoctoral Researcher at the RIKEN Center for Computational Science, Japan, for 2 years and at Kyushu University, Japan, for 5 months. In Bangladesh, he contributed to academia as a Lecturer of Mathematics at Daffodil International University and City University for more than 2.5 years. Dr. Hossain is the recipient of several prestigious awards, including the Japanese Government (MEXT) Scholarship for both doctoral and research studies. He is also a grantee of the JSPS Grant-in-Aid for Scientific Research (C) for his ongoing work in traffic modeling and simulation. Dr. Hossain continues to contribute to cutting-edge research at the intersection of mathematics, engineering, and computer science.",
     links: [
       {
         label: "Google Scholar",
@@ -59,20 +59,37 @@ export const members: Member[] = [
     ],
   },
   {
-    slug: "faculty-co-lead-2",
-    name: "Dr. Md Aamir Farooq",
-    role: "Lead",
-    affiliation: "Asian University for Women (AUW)",
-    interests: ["Traffic Flow Prediction", "Game Theory"],
-    photo: "/members/placeholder.png",
-    bio: "Researcher contributing to interdisciplinary initiatives across AI, education, and applied analytics.",
-    links: [
-      {
-        label: "AUW Profile",
-        url: "https://auw.edu.bd/",
-      },
-    ],
-  },
+  slug: "faculty-co-lead-2",
+  name: "Dr Aamir Farooq",
+  role: "Lead",
+  affiliation: "Asian University for Women (AUW)",
+  interests: [
+    "Numerical Linear Algebra",
+    "Matrix Perturbation Theory",
+    "Condition Numbers",
+    "Statistical Estimations",
+    "Statistical Signal Processing",
+    "Independent Component Analysis (ICA)",
+    "Blind Source Separation (BSS)",
+    "Fractional Ordinary Differential Equations"
+  ],
+  photo: "/members/amir_farooq.jpg",
+  bio: "Dr Aamir Farooq is a mathematician whose research focuses on numerical linear algebra, matrix perturbation theory, condition numbers, statistical estimation, statistical signal processing, independent component analysis (ICA), blind source separation (BSS), and applications of fractional ordinary differential equations. He earned his PhD in Mathematics from Chongqing University, China, in 2019 with a dissertation titled 'Refined Rigorous Perturbation Bounds for Some Matrix Factorizations'. Prior to that, he completed his MS in Mathematics from COMSATS University Islamabad, Pakistan, where his research focused on analytical solutions of fractional Oldroyd-B fluid models. Dr Farooq also holds MSc and BSc degrees in Mathematics from the University of Peshawar, Pakistan. In addition to his research background, he completed a B.Ed in Science from Allama Iqbal Open University, Pakistan, specializing in mathematics and physics education. His research combines theoretical mathematics with computational techniques and has applications in signal processing, statistical analysis, and advanced mathematical modeling.",
+  links: [
+    {
+      label: "ResearchGate",
+      url: "https://www.researchgate.net/profile/Aamir-Farooq-5"
+    },
+    {
+      label: "ORCID",
+      url: "https://orcid.org/0000-0002-1878-5331"
+    },
+    {
+      label: "Scopus Author ID",
+      url: "https://www.scopus.com/authid/detail.uri?authorId=57207622529"
+    }
+  ]
+},
   {
     slug: "faculty-co-lead-3",
     name: "Dr Md Junayed Nayeem",
@@ -85,7 +102,7 @@ export const members: Member[] = [
       "Breast Cancer Research",
     ],
     photo: "/members/junayed.jpeg",
-    bio: "Researcher contributing to interdisciplinary initiatives across AI, education, and applied analytics.",
+    bio: "Dr. Md Junayed Nayeem is an Assistant Professor of Biological Sciences at the Asian University for Women (AUW), having joined in the Spring of 2025. Prior to his appointment at AUW, Dr. Nayeem completed postdoctoral fellowship at the National Cerebral and Cardiovascular Center in Osaka, Japan. Dr. Nayeem obtained his Ph.D. from the Department of Physiology, Aichi Medical University, Nagoya, Japan. Dr. Nayeem completed his B.Sc. (Honor’s) and M.S. from the Department of Biochemistry and Molecular Biology, University of Chittagong. Dr. Nayeem has been awarded numerous fellowship for his academic excellence including Japan Educational Exchange and Services (JEES) fellowship, JASSO scholarship, 3S Foundation scholarship, Aichi Medical University Graduate fellowship, National Science & Technology (NST) fellowship, from the Government of the People’s Republic of Bangladesh. At AUW, Dr. Nayeem will be teaching the major courses of Biological Science Program.",
     links: [
       {
         label: "AUW Profile",
@@ -93,69 +110,258 @@ export const members: Member[] = [
       },
     ],
   },
+{
+  slug: "faculty-co-lead-4",
+  name: "Dr Ayan Saha",
+  role: "Lead",
+  affiliation: "Asian University for Women (AUW)",
+  interests: [
+    "Bioinformatics",
+    "Cancer Genomics",
+    "Translational Oncology",
+    "Pediatric Acute Lymphoblastic Leukaemia",
+    "Computational Biology",
+  ],
+  photo: "/members/ayan_saha.jpeg",
+  bio: "Dr. Ayan Saha is an Assistant Professor of Bioinformatics and Joint Programme Director for Biological Sciences at the Asian University for Women (AUW). He joined AUW in Fall 2022. Before joining AUW, Dr. Saha worked as an Assistant Professor in the Department of Genetic Engineering and Biotechnology at East West University, Dhaka. Dr. Saha completed his BSc (Hons.) and MSc in Genetic Engineering and Biotechnology from the University of Chittagong. He later earned an MSc in Translational Oncology from the University of Hull, UK, with a Commonwealth Shared Scholarship, where he worked on the role of bisphosphonates in regulating MMP-2 levels in breast cancer. In 2016, Dr. Saha began his doctoral research at the University of New South Wales (UNSW), Australia, under the TF Scholarship. His research focused on developing new treatments for high-risk pediatric acute lymphoblastic leukemia and involved developing a novel in vivo patient-derived xenograft (PDX) mouse model to study minimal residual disease cells. He received his PhD in Medicine from UNSW in 2020. Dr. Saha has received several prestigious awards including the National Institute of Physiological Sciences Internship Fellowship (Japan), Commonwealth Shared Scholarship (UK), and the Children’s Cancer Institute Completion Scholarship (Australia).",
+  links: [
+    {
+      label: "AUW Profile",
+      url: "https://auw.edu.bd/",
+    },
+  ],
+},
+{
+  slug: "faculty-co-lead-5",
+  name: "Dr Md Razib Mamun",
+  role: "Lead",
+  affiliation: "Asian University for Women (AUW)",
+  interests: [
+    "Public Health",
+    "Health Systems Strengthening",
+    "Palliative Care",
+    "Non-Communicable Diseases (NCDs)",
+    "Qualitative Research",
+    "Evidence Synthesis",
+  ],
+  photo: "/members/placeholder.png",
+  bio: "Dr. Md. Razib Mamun is an Assistant Professor of Public Health at the Asian University for Women (AUW). He earned his PhD in Public Health and Health Systems from Nagoya University, Japan. Dr. Mamun has extensive experience in public health research and has previously worked with leading institutions including icddr,b, BRAC University, and Bangladesh Medical University. His research expertise includes palliative care, health systems strengthening, non-communicable diseases (NCDs), qualitative research, and evidence synthesis. Dr. Mamun collaborates with researchers and institutions across Japan, Sweden, Ireland, and Bangladesh and is an active member of The Cochrane Collaboration. His work focuses on improving health systems, expanding access to palliative care, and addressing the growing burden of NCDs to improve population health outcomes.",
+  links: [
+    {
+      label: "AUW Profile",
+      url: "https://auw.edu.bd/",
+    },
+  ],
+},
+{
+slug:"collab-1",
+name:"Md Sulaiman",
+role:"Collaborative Researcher",
+affiliation:"Asian University for Women (AUW)",
+interests:[
+"Mathematical Modeling",
+"Population Dynamics",
+"Computational Fluid Dynamics",
+"Mathematics Education",
+"Critical Thinking in Mathematics"
+],
+photo:"/members/placeholder.png",
+bio:"Md. Sulaiman is a Senior Fellow of Mathematics at the Asian University for Women (AUW), serving since May 12, 2025. He teaches in the Pathways and Foundations of Mathematics program, where his responsibilities include academic instruction and mentoring students to strengthen their mathematical foundations. He completed both his undergraduate and postgraduate degrees in Mathematics from the University of Rajshahi, Bangladesh. His academic interests focus on developing mathematical models in population dynamics, computational fluid dynamics, and promoting critical thinking skills in mathematics education.",
+links:[
+{
+label:"AUW Profile",
+url:"https://auw.edu.bd/"
+}
+]
+},
+{
+slug:"s1",
+name:"Katayun Ahmadi",
+role:"Student Researcher",
+program:"UG2",
+major:"Applied Mathematics & Data Science",
+photo:"/members/placeholder.png",
+bio:"Katayun Ahmadi is an undergraduate student in Applied Mathematics and Data Science interested in mathematical modeling, statistical learning, and data-driven research.\n\n**Project:** Machine learning and regression modeling using Python for predictive analytics."
+},
+{
+slug:"s2",
+name:"Jannatul Noor",
+role:"Student Researcher",
+program:"UG2",
+major:"Applied Mathematics & Data Science",
+photo:"/members/placeholder.png",
+bio:"Jannatul Noor studies Applied Mathematics and Data Science with interests in statistics, data analysis, and computational mathematics.\n\n**Project:** Statistical modeling and exploratory data analysis using Python and R."
+},
+{
+slug:"s3",
+name:"Shara Jannat Disha",
+role:"Student Researcher",
+program:"UG2",
+major:"Applied Mathematics & Data Science",
+photo:"/members/placeholder.png",
+bio:"Shara Jannat Disha is an undergraduate student focusing on applied mathematics, numerical methods, and computational data analysis.\n\n**Project:** Data visualization and statistical analysis of real-world datasets."
+},
+{
+slug:"s4",
+name:"Aziza Yaqoobi",
+role:"Student Researcher",
+program:"UG2",
+major:"Applied Mathematics & Data Science",
+photo:"/members/placeholder.png",
+bio:"Aziza Yaqoobi studies Applied Mathematics and Data Science with interests in machine learning and predictive analytics.\n\n**Project:** Predictive modeling using machine learning algorithms."
+},
+{
+slug:"s5",
+name:"Zuhal Attayee",
+role:"Student Researcher",
+program:"UG2",
+major:"Applied Mathematics & Data Science",
+photo:"/members/placeholder.png",
+bio:"Zuhal Attayee is interested in computational mathematics, numerical analysis, and data science.\n\n**Project:** Numerical modeling and data-driven analysis using MATLAB and Python."
+},
+{
+slug:"s6",
+name:"Masura Mollika Niti",
+role:"Student Researcher",
+program:"UG2",
+major:"Applied Mathematics & Data Science",
+photo:"/members/placeholder.png",
+bio:"Masura Mollika Niti studies Applied Mathematics and Data Science and focuses on statistical learning and data analytics.\n\n**Project:** Machine learning models for classification and prediction."
+},
+{
+slug:"s7",
+name:"Fahmida Begum",
+role:"Student Researcher",
+program:"UG2",
+major:"Applied Mathematics & Data Science",
+photo:"/members/placeholder.png",
+bio:"Fahmida Begum is an undergraduate student focusing on applied statistics and data science techniques.\n\n**Project:** Data mining and statistical analysis using Python."
+},
 
-  {
-    slug: "s1",
-    name: "Student",
-    role: "Student Researcher",
-    program: "UG 1.3",
-    major: "Applied Mathematics & Data Science",
-    photo: "/members/placeholder.png",
-  },
-  {
-    slug: "s2",
-    name: "Student",
-    role: "Student Researcher",
-    program: "UG 2.1",
-    major: "Computer Science",
-    photo: "/members/placeholder.png",
-  },
-  {
-    slug: "s3",
-    name: "Student",
-    role: "Student Researcher",
-    program: "UG 3.2",
-    major: "Economics",
-    photo: "/members/placeholder.png",
-  },
-  {
-    slug: "s4",
-    name: "Student",
-    role: "Student Researcher",
-    program: "UG 2.2",
-    major: "Environmental Science",
-    photo: "/members/placeholder.png",
-  },
-  {
-    slug: "s5",
-    name: "Student",
-    role: "Student Researcher",
-    program: "UG 2.2",
-    major: "Biological Science",
-    photo: "/members/placeholder.png",
-  },
-  {
-    slug: "s6",
-    name: "Student",
-    role: "Student Researcher",
-    program: "UG 2.2",
-    major: "Public Health",
-    photo: "/members/placeholder.png",
-  },
-  {
-    slug: "s7",
-    name: "Student",
-    role: "Student Researcher",
-    program: "UG 2.2",
-    major: "Education",
-    photo: "/members/placeholder.png",
-  },
-  {
-    slug: "s8",
-    name: "Student",
-    role: "Student Researcher",
-    program: "UG 2.2",
-    major: "PPE",
-    photo: "/members/placeholder.png",
-  },
+{
+slug:"s8",
+name:"Zulaikha Mohammadi",
+role:"Student Researcher",
+program:"UG3",
+major:"Computer Science",
+photo:"/members/placeholder.png",
+bio:"Zulaikha Mohammadi is a Computer Science student interested in machine learning, programming, and computational data analysis.\n\n**Project:** Machine learning applications for predictive analytics."
+},
+{
+slug:"s9",
+name:"Ruqaiya Akbari",
+role:"Student Researcher",
+program:"UG3",
+major:"Computer Science",
+photo:"/members/placeholder.png",
+bio:"Ruqaiya Akbari studies Computer Science and is interested in algorithms, software development, and artificial intelligence.\n\n**Project:** Development of predictive models using machine learning."
+},
+{
+slug:"s10",
+name:"Tamana Fazel",
+role:"Student Researcher",
+program:"UG3",
+major:"Computer Science",
+photo:"/members/placeholder.png",
+bio:"Tamana Fazel studies Computer Science with interests in data structures, machine learning, and data science.\n\n**Project:** Efficient implementation of algorithms for data analysis."
+},
+{
+slug:"s11",
+name:"Maya Kc",
+role:"Student Researcher",
+program:"UG3",
+major:"Computer Science",
+photo:"/members/placeholder.png",
+bio:"Maya Kc studies Computer Science and focuses on programming and machine learning.\n\n**Project:** Data analysis and visualization using Python."
+},
+{
+slug:"s12",
+name:"Fatima Hashimi",
+role:"Student Researcher",
+program:"UG2",
+major:"Computer Science",
+photo:"/members/placeholder.png",
+bio:"Fatima Hashimi is a Computer Science student interested in programming and artificial intelligence.\n\n**Project:** Introductory machine learning models using Python."
+},
+{
+slug:"s13",
+name:"Umme Hafsa Mazumder",
+role:"Student Researcher",
+program:"UG2",
+major:"Computer Science",
+photo:"/members/placeholder.png",
+bio:"Umme Hafsa Mazumder studies Computer Science and focuses on programming and computational problem solving.\n\n**Project:** Algorithm development and data analysis."
+},
+{
+slug:"s14",
+name:"Mirnalini Arulrohan",
+role:"Student Researcher",
+program:"UG2",
+major:"Computer Science",
+photo:"/members/placeholder.png",
+bio:"Mirnalini Arulrohan studies Computer Science with interests in data science and artificial intelligence.\n\n**Project:** Data visualization and machine learning experiments."
+},
+{
+slug:"s15",
+name:"Nur Shaba",
+role:"Student Researcher",
+program:"UG2",
+major:"Computer Science",
+photo:"/members/placeholder.png",
+bio:"Nur Shaba studies Computer Science and focuses on programming and computational problem solving.\n\n**Project:** Programming and algorithmic problem solving."
+},
+{
+slug:"s16",
+name:"Nanzeeba Ayman",
+role:"Student Researcher",
+program:"UG2",
+major:"Computer Science",
+photo:"/members/placeholder.png",
+bio:"Nanzeeba Ayman studies Computer Science with interests in software development and machine learning.\n\n**Project:** Predictive analytics using Python."
+},
+{
+slug:"s17",
+name:"Nasima",
+role:"Student Researcher",
+program:"UG3",
+major:"Computer Science",
+photo:"/members/placeholder.png",
+bio:"Nasima studies Computer Science and is interested in programming and data science.\n\n**Project:** Machine learning classification models."
+},
+{
+slug:"s18",
+name:"Fahima Khal Shayeq",
+role:"Student Researcher",
+program:"UG3",
+major:"Computer Science",
+photo:"/members/placeholder.png",
+bio:"Fahima Khal Shayeq studies Computer Science with interests in data science and machine learning.\n\n**Project:** Data analysis and visualization using Python."
+},
+{
+slug:"s19",
+name:"Mobashira Mahmoda Chowdhury Nusrat",
+role:"Student Researcher",
+program:"UG2",
+major:"Public Health",
+photo:"/members/placeholder.png",
+bio:"Mobashira Mahmoda Chowdhury Nusrat studies Public Health and is interested in data-driven health research.\n\n**Project:** Statistical analysis of public health datasets."
+}, {
+slug:"s20",
+name:"Anika Tabussum Shoumi",
+role:"Student Researcher",
+program:"UG 1.2",
+major:"",
+photo:"/members/placeholder.png",
+bio:"Anika Tabussum Shoumi is an undergraduate student at the Asian University for Women currently in UG 1.2. She is interested in developing strong foundations in mathematics, data analysis, and computational thinking.\n\n**Project:** Exploratory data analysis and introductory programming for scientific computing."
+},
+
+{
+slug:"s21",
+name:"Purna Sen",
+role:"Student Researcher",
+program:"UG 1.2",
+major:"",
+photo:"/members/placeholder.png",
+bio:"Purna Sen is an undergraduate student at the Asian University for Women in UG 1.2. She is interested in mathematics, logical reasoning, and learning computational tools for data analysis.\n\n**Project:** Introduction to data analysis and visualization using Python."
+}
 ];
