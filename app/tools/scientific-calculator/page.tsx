@@ -32,17 +32,10 @@ function factorial(n: number): number {
   if (!Number.isFinite(n) || n < 0 || Math.floor(n) !== n) {
     throw new Error("Factorial is defined for non-negative integers only.");
   }
+
   let result = 1;
   for (let i = 2; i <= n; i++) result *= i;
   return result;
-}
-
-function toRadians(x: number, mode: AngleMode): number {
-  return mode === "DEG" ? (x * Math.PI) / 180 : x;
-}
-
-function fromRadians(x: number, mode: AngleMode): number {
-  return mode === "DEG" ? (x * 180) / Math.PI : x;
 }
 
 function sanitizeExpression(expr: string): string {
@@ -54,18 +47,20 @@ function sanitizeExpression(expr: string): string {
     .replace(/\^/g, "**");
 }
 
-function transformFunctions(expr: string, angleMode: AngleMode): string {
+function transformFunctions(expr: string): string {
   let s = sanitizeExpression(expr);
 
-  // Inverse trig first, then direct trig
+  // Inverse trig first so asin/acos/atan do not get partially matched as sin/cos/tan
   s = s.replace(/\basin\(/g, "ASIN(");
   s = s.replace(/\bacos\(/g, "ACOS(");
   s = s.replace(/\batan\(/g, "ATAN(");
 
+  // Direct trig
   s = s.replace(/\bsin\(/g, "SIN(");
   s = s.replace(/\bcos\(/g, "COS(");
   s = s.replace(/\btan\(/g, "TAN(");
 
+  // Other functions
   s = s.replace(/\bln\(/g, "LN(");
   s = s.replace(/\blog\(/g, "LOG(");
   s = s.replace(/\bsqrt\(/g, "SQRT(");
@@ -73,24 +68,14 @@ function transformFunctions(expr: string, angleMode: AngleMode): string {
   s = s.replace(/\babs\(/g, "ABS(");
   s = s.replace(/\bexp\(/g, "EXP(");
 
-  // Replace function names with safe JS expressions
-  if (angleMode === "DEG") {
-    s = s.replace(/\bSIN\(/g, "Math.sin(toRad(");
-    s = s.replace(/\bCOS\(/g, "Math.cos(toRad(");
-    s = s.replace(/\bTAN\(/g, "Math.tan(toRad(");
+  // Replace with safe helper names
+  s = s.replace(/\bSIN\(/g, "sinFn(");
+  s = s.replace(/\bCOS\(/g, "cosFn(");
+  s = s.replace(/\bTAN\(/g, "tanFn(");
 
-    s = s.replace(/\bASIN\(/g, "fromRad(Math.asin(");
-    s = s.replace(/\bACOS\(/g, "fromRad(Math.acos(");
-    s = s.replace(/\bATAN\(/g, "fromRad(Math.atan(");
-  } else {
-    s = s.replace(/\bSIN\(/g, "Math.sin(");
-    s = s.replace(/\bCOS\(/g, "Math.cos(");
-    s = s.replace(/\bTAN\(/g, "Math.tan(");
-
-    s = s.replace(/\bASIN\(/g, "Math.asin(");
-    s = s.replace(/\bACOS\(/g, "Math.acos(");
-    s = s.replace(/\bATAN\(/g, "Math.atan(");
-  }
+  s = s.replace(/\bASIN\(/g, "asinFn(");
+  s = s.replace(/\bACOS\(/g, "acosFn(");
+  s = s.replace(/\bATAN\(/g, "atanFn(");
 
   s = s.replace(/\bLN\(/g, "Math.log(");
   s = s.replace(/\bLOG\(/g, "Math.log10(");
@@ -108,25 +93,57 @@ function evaluateExpression(expr: string, angleMode: AngleMode): string {
   if (!expr.trim()) return "";
 
   try {
-    const transformed = transformFunctions(expr, angleMode);
+    const transformed = transformFunctions(expr);
 
     const evaluator = new Function(
       "PI",
       "E_CONST",
       "fact",
-      "toRad",
-      "fromRad",
+      "sinFn",
+      "cosFn",
+      "tanFn",
+      "asinFn",
+      "acosFn",
+      "atanFn",
       `
         return (${transformed});
       `
     );
 
+    const sinFn = (x: number) =>
+      angleMode === "DEG" ? Math.sin((x * Math.PI) / 180) : Math.sin(x);
+
+    const cosFn = (x: number) =>
+      angleMode === "DEG" ? Math.cos((x * Math.PI) / 180) : Math.cos(x);
+
+    const tanFn = (x: number) =>
+      angleMode === "DEG" ? Math.tan((x * Math.PI) / 180) : Math.tan(x);
+
+    const asinFn = (x: number) => {
+      const value = Math.asin(x);
+      return angleMode === "DEG" ? (value * 180) / Math.PI : value;
+    };
+
+    const acosFn = (x: number) => {
+      const value = Math.acos(x);
+      return angleMode === "DEG" ? (value * 180) / Math.PI : value;
+    };
+
+    const atanFn = (x: number) => {
+      const value = Math.atan(x);
+      return angleMode === "DEG" ? (value * 180) / Math.PI : value;
+    };
+
     const value = evaluator(
       Math.PI,
       Math.E,
       factorial,
-      (x: number) => toRadians(x, angleMode),
-      (x: number) => fromRadians(x, angleMode)
+      sinFn,
+      cosFn,
+      tanFn,
+      asinFn,
+      acosFn,
+      atanFn
     );
 
     return formatResult(Number(value));
@@ -645,8 +662,7 @@ export default function ScientificCalculatorPage() {
                     fontSize: "0.78rem",
                   }}
                 >
-                  No calculations yet. Build an expression and press{" "}
-                  <strong>=</strong>.
+                  No calculations yet. Build an expression and press <strong>=</strong>.
                 </div>
               )
             ) : (

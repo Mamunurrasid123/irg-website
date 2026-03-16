@@ -13,6 +13,7 @@ const nav = [
   { href: "/blog", label: "IRG Blog" },
   { href: "/games/tic-tac-toe", label: "Projects" },
   { href: "/tools", label: "Services" },
+  { href: "/scholarships", label: "Scholarships Info" },
   { href: "/contact", label: "Contact" },
 ];
 
