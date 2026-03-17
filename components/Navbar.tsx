@@ -10,11 +10,11 @@ const nav = [
   { href: "/members", label: "Teams" },
   { href: "/publications", label: "Publications" },
   { href: "/events", label: "Events" },
-  { href: "/blog", label: "IRG Blog" },
+  { href: "/blog", label: "Blog" },
   { href: "/games/tic-tac-toe", label: "Projects" },
   { href: "/tools", label: "Research tools" },
   { href: "/scholarships", label: "Scholarships Info" },
-  { href: "/contact", label: "Contact" },
+  { href: "/contact", label: "Contact IRG" },
 ];
 
 export default function Navbar() {
