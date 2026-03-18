@@ -12,8 +12,8 @@ const nav = [
   { href: "/events", label: "Events" },
   { href: "/blog", label: "Blog" },
   { href: "/games/tic-tac-toe", label: "Projects" },
-  { href: "/tools", label: "Research tools" },
-  { href: "/scholarships", label: "Scholarships Info" },
+  { href: "/tools", label: "Tools" },
+  { href: "/scholarships", label: "Scholarships" },
   { href: "/contact", label: "Contact IRG" },
 ];
 
