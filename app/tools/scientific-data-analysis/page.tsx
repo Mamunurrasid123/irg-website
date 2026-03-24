@@ -19,7 +19,7 @@ import {
 
 import DescriptivePanel from "./components/analysis/DescriptivePanel";
 import TTestPanel from "./components/analysis/TTestPanel";
-import PairedTTestPanel from "./components/analysis/PairedTTestPanel";
+// import PairedTTestPanel from "./components/analysis/PairedTTestPanel";
 import LinearRegressionPanel from "./components/analysis/LinearRegressionPanel";
 
 if (typeof window !== "undefined" && !(window as any).Buffer) {
@@ -582,7 +582,7 @@ export default function Page() {
               <Panel title="Analysis workspace" subtitle="Results panel for the selected workflow">
                 {analysis === "descriptive" && <DescriptivePanel {...commonProps} />}
                 {analysis === "ttest" && <TTestPanel {...commonProps} />}
-                {analysis === "pairedTTest" && <PairedTTestPanel {...commonProps} />}
+                {/* {analysis === "pairedTTest" && <PairedTTestPanel {...commonProps} />} */}
                 {analysis === "linearRegression" && <LinearRegressionPanel {...commonProps} />}
 
                 {[
