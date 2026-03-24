@@ -237,5 +237,18 @@ export const tools = [
     "Degree and radian modes",
     "Clean, interactive, and well-designed interface",
   ],
-}
+},
+  {
+    title: "Scientific Data Analysis Platform",
+    description:
+      "Upload Excel or CSV datasets and perform step-by-step statistical analysis with mathematical derivation, significance testing, interpretation, and graphs for scientific research.",
+    href: "/tools/scientific-data-analysis",
+    features: [
+      "Dataset upload and preview",
+      "Descriptive statistics and hypothesis testing",
+      "t-test, ANOVA, chi-square, correlation, and regression",
+      "Step-by-step mathematical explanation",
+      "Interpretation notes and graphical outputs",
+    ],
+  },
 ];

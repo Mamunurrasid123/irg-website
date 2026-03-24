@@ -257,11 +257,6 @@ Chattogram, Bangladesh
 This project is intended for academic, educational, and institutional use.  
 You may add a license here, for example:
 
-```md
-MIT License
-```
-
-or keep it as:
 
 ```md
 All rights reserved.
