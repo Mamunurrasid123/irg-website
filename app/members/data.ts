@@ -202,6 +202,15 @@ photo:"/members/placeholder.png",
 bio:"Shara Jannat Disha is an undergraduate student focusing on applied mathematics, numerical methods, and computational data analysis.\n\n**Project:** Data visualization and statistical analysis of real-world datasets."
 },
 {
+slug:"s14",
+name:"Mirnalini Arulrohan",
+role:"Student Researcher",
+program:"UG2",
+major:"Applied Mathematics & Data Science",
+photo:"/members/placeholder.png",
+bio:"Mirnalini Arulrohan studies Applied Mathematics & Data Science with interests in data science and artificial intelligence.\n\n**Project:** Data visualization and machine learning experiments."
+},
+{
 slug:"s4",
 name:"Aziza Yaqoobi",
 role:"Student Researcher",
@@ -293,15 +302,6 @@ photo:"/members/placeholder.png",
 bio:"Umme Hafsa Mazumder studies Computer Science and focuses on programming and computational problem solving.\n\n**Project:** Algorithm development and data analysis."
 },
 {
-slug:"s14",
-name:"Mirnalini Arulrohan",
-role:"Student Researcher",
-program:"UG2",
-major:"Computer Science",
-photo:"/members/placeholder.png",
-bio:"Mirnalini Arulrohan studies Computer Science with interests in data science and artificial intelligence.\n\n**Project:** Data visualization and machine learning experiments."
-},
-{
 slug:"s15",
 name:"Nur Shaba",
 role:"Student Researcher",
@@ -363,5 +363,13 @@ program:"UG 1.2",
 major:"",
 photo:"/members/placeholder.png",
 bio:"Purna Sen is an undergraduate student at the Asian University for Women in UG 1.2. She is interested in mathematics, logical reasoning, and learning computational tools for data analysis.\n\n**Project:** Introduction to data analysis and visualization using Python."
-}
+}, {
+  slug: "s22",
+  name: "Shahr Bano Rezai",
+  role: "Student Researcher",
+  program: "UG 2.3",
+  major: "Computer Science",
+  photo: "/members/placeholder.png",
+  bio: "Shahr Bano Rezai is an undergraduate student at the Asian University for Women in UG 2.3, majoring in Computer Science. She is a dedicated and hardworking student with strong enthusiasm for research and a solid foundation in both Mathematics and Computer Science.\n\nHer primary research interests include Artificial Intelligence, Machine Learning, and data-related domains."
+},
 ];
