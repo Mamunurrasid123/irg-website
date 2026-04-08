@@ -7,8 +7,9 @@ export const metadata = {
 };
 
 export default function MembersPage() {
-  const faculty = members.filter((m) => !m.program);
-  const students = members.filter((m) => m.program);
+ const faculty = members.filter((m) => m.category === "faculty");
+const collaborators = members.filter((m) => m.category === "collaborator");
+const students = members.filter((m) => m.category === "student");
 
   return (
     <div style={{ maxWidth: 1200, margin: "0 auto", padding: 32 }}>
@@ -118,7 +119,92 @@ export default function MembersPage() {
           ))}
         </div>
       </section>
+<section className="section">
+  <h2
+    className="h2"
+    style={{
+      marginBottom: 16,
+      color: "#e8f011",
+      borderBottom: "2px solid #e5e7eb",
+      paddingBottom: 8,
+    }}
+  >
+    Collaborative Researchers
+  </h2>
 
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+      gap: 18,
+    }}
+  >
+    {collaborators.map((m) => (
+      <article
+        key={m.slug}
+        className="card"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          height: "100%",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            gap: 14,
+            alignItems: "center",
+            marginBottom: 12,
+          }}
+        >
+          <div
+            style={{
+              width: 72,
+              height: 72,
+              borderRadius: "50%",
+              overflow: "hidden",
+              border: "1px solid var(--border)",
+              flexShrink: 0,
+            }}
+          >
+            <Image
+              src={m.photo || "/members/placeholder.png"}
+              alt={m.name}
+              width={72}
+              height={72}
+              unoptimized
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
+          </div>
+
+          <div>
+            <h3 style={{ margin: 0, fontSize: 18 }}>{m.name}</h3>
+            {m.role && <div className="small">{m.role}</div>}
+            {(m.program || m.major) && (
+              <div className="small">
+                {m.program}
+                {m.major ? ` — ${m.major}` : ""}
+              </div>
+            )}
+          </div>
+        </div>
+
+        <Link
+          href={`/members/${m.slug}`}
+          className="btn"
+          style={{
+            marginTop: "auto",
+            backgroundColor: "lightblue",
+            textAlign: "center",
+            display: "inline-block",
+          }}
+        >
+          View Profile
+        </Link>
+      </article>
+    ))}
+  </div>
+</section>
       <section className="section">
         <h2
           className="h2"
@@ -129,7 +215,7 @@ export default function MembersPage() {
             color: "#e8f011",
           }}
         >
-          Student Researchers
+          Student Researchers and Members 
         </h2>
 
         <div
