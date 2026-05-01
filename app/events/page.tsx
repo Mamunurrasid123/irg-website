@@ -13,7 +13,7 @@ type Event = {
 
 const events: Event[] = [
   {
-    date: "2026-05-14",
+    date: "2026-05-21",
     title: "From Mathematics to Data Science: Why Data and Analytical Thinking Matter for Every AUW Student",
     place: "AUW Mahsha Amini Campus (Sunvally)",
     type: "Workshop",
