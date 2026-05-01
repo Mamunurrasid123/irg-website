@@ -20,7 +20,14 @@ const events: Event[] = [
     speaker: "Dr. Md. Mamunur Rasid",
     description:
       "An interactive session on the role of mathematics as a foundation for statistics, computation, and data science, with examples, applications, and academic pathways.",
-  },
+  },{
+  "date": "2026-05-03",
+  "title": "Women Safety in University",
+  "place": "Telespace, Sunvally",
+  "type": "Workshop",
+  "speaker": "Deputy Inspector General (Retd.) Amena Begam (BPM)",
+  "description": "An interactive and empowering workshop focused on women’s safety in university environments. The session will address real-life safety challenges, practical self-awareness strategies, and approaches to preventing and responding to gender-based violence. Participants will gain valuable insights from an experienced policing professional, while also exploring how to build a safer, more supportive campus community for all."
+},
   {
     date: "2026-03-15",
     title: "IRG Seminar: Topic (Add)",
