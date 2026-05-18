@@ -394,10 +394,10 @@ export const members: Member[] = [
     name: "Anika Tabussum Shoumi",
     role: "Student Researcher",
     category: "student",
-    program: "UG 1.3",
+    program: "UG 2.1",
     major: "",
     photo: "/members/placeholder.png",
-    bio: "Anika Tabussum Shoumi is an undergraduate student at the Asian University for Women currently in UG 1.2. She is interested in developing strong foundations in mathematics, data analysis, and computational thinking.\n\n**Project:** Exploratory data analysis and introductory programming for scientific computing.",
+    bio: "Anika Tabassum Shoumi is an undergraduate student at the Asian University for Women, currently in UG 2 pursuing Environmental Science. Alongside her focus on environmental studies, she is building strong foundations in mathematics, data analysis, and computational thinking to approach problems with both scientific insight and analytical precision. **Project:** Exploratory data analysis and introductory programming for scientific computing.",
   },
   {
     slug: "s21",
