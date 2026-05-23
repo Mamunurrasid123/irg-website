@@ -14,6 +14,7 @@ const nav = [
   { href: "/games/tic-tac-toe", label: "Projects" },
   { href: "/tools", label: "Tools" },
   { href: "/scholarships", label: "Scholarships" },
+  { href: "/opportunities", label: "Opportunities" },
   { href: "/contact", label: "Contact IRG" },
 ];
 
