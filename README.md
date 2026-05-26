@@ -53,19 +53,19 @@ https://github.com/Mamunurrasid123/irg-website
 
 ## Desktop Academic Interface
 
-![Homepage Preview](public/images/homepage-preview.png)
+![Homepage Preview](public/home-page-preview.png)
 
 ---
 
 ## Research & Educational Tools
 
-![Tools Preview](public/images/tools-preview.png)
+![Tools Preview](public/research-tool.png)
 
 ---
 
-## Mobile Responsive Design
+<!-- ## Mobile Responsive Design
 
-![Mobile Preview](public/images/mobile-preview.png)
+![Mobile Preview](public/images/mobile-preview.png) -->
 
 ---
 
