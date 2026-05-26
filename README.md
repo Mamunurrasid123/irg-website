@@ -62,7 +62,6 @@ https://github.com/Mamunurrasid123/irg-website
 ![Tools Preview](public/research-tool.png)
 
 ---
-
 <!-- ## Mobile Responsive Design
 
 ![Mobile Preview](public/images/mobile-preview.png) -->
