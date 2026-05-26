@@ -25,7 +25,7 @@ export const members: Member[] = [
     affiliation: "Asian University for Women (AUW)",
     interests: ["Computational Mathematics", "AI, ML & Data Science"],
     email: "irg@auw.edu.bd",
-    photo: "/members/mamunur.jpeg",
+    photo: "/members/mamun-updated.jpeg",
     bio: "Dr. Md. Mamunur Rasid is an Assistant Professor of Mathematics and Data Science at the Asian University for Women (AUW), Chattogram, Bangladesh. He earned his Ph.D. in Applied Mathematics from Kanazawa University, Japan. His research interests include applied mathematics, numerical analysis, differential equations, hydrodynamics, scientific computing, and data science, with growing interests in artificial intelligence and machine learning. Before joining AUW, he worked in Japan in system design and programming, applying machine learning and computer vision techniques to anomaly detection and image analysis. At AUW, he is actively involved in curriculum development, interdisciplinary research, and student mentorship, and is committed to promoting inclusive and high-quality education.",
     links: [
       {
