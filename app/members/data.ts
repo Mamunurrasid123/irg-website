@@ -397,7 +397,7 @@ export const members: Member[] = [
     program: "UG ",
     major: "",
     photo: "/members/placeholder.png",
-    bio: "Anika Tabassum Shoumi is an undergraduate student at the Asian University for Women, currently in UG 2 pursuing Environmental Science. Alongside her focus on environmental studies, she is building strong foundations in mathematics, data analysis, and computational thinking to approach problems with both scientific insight and analytical precision. **Project:** Exploratory data analysis and introductory programming for scientific computing.",
+    bio: "Anika Tabassum Shoumi is an undergraduate student at the Asian University for Women, currently in UG  pursuing Environmental Science. Alongside her focus on environmental studies, she is building strong foundations in mathematics, data analysis, and computational thinking to approach problems with both scientific insight and analytical precision. **Project:** Exploratory data analysis and introductory programming for scientific computing.",
   },
   {
     slug: "s21",
@@ -407,7 +407,7 @@ export const members: Member[] = [
     program: "UG",
     major: "",
     photo: "/members/placeholder.png",
-    bio: "Purna Sen is an undergraduate student at the Asian University for Women in UG 1.2. She is interested in mathematics, logical reasoning, and learning computational tools for data analysis.\n\n**Project:** Introduction to data analysis and visualization using Python.",
+    bio: "Purna Sen is an undergraduate student at the Asian University for Women in UG. She is interested in mathematics, logical reasoning, and learning computational tools for data analysis.\n\n**Project:** Introduction to data analysis and visualization using Python.",
   },
   {
     slug: "s22",
@@ -417,6 +417,16 @@ export const members: Member[] = [
     program: "UG ",
     major: "Computer Science",
     photo: "/members/placeholder.png",
-    bio: "Shahr Bano Rezai is an undergraduate student at the Asian University for Women in UG 2.3, majoring in Computer Science. She is a dedicated and hardworking student with strong enthusiasm for research and a solid foundation in both Mathematics and Computer Science.\n\nHer primary research interests include Artificial Intelligence, Machine Learning, and data-related domains.",
+    bio: "Shahr Bano Rezai is an undergraduate student at the Asian University for Women in UG, majoring in Computer Science. She is a dedicated and hardworking student with strong enthusiasm for research and a solid foundation in both Mathematics and Computer Science.\n\nHer primary research interests include Artificial Intelligence, Machine Learning, and data-related domains.",
+  },
+   {
+    slug: "s22",
+    name: "Farzana Forogh",
+    role: "Student Researcher",
+    category: "student",
+    program: "UG ",
+    major: "Computer Science",
+    photo: "/members/placeholder.png",
+    bio: "Farzana Forogh is an undergraduate student at the Asian University for Women in UG, majoring in Computer Science. She is a dedicated and hardworking student with strong enthusiasm for research and a solid foundation in both Mathematics and Computer Science.\n\nHer primary research interests include Artificial Intelligence, Machine Learning, and data-related domains.",
   },
 ];

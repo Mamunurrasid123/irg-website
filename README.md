@@ -88,6 +88,7 @@ irg-website/
 │   ├── about/
 │   ├── contact/
 │   ├── members/
+│   ├── opportunities/
 │   ├── projects/
 │   ├── research/
 │   ├── blog/
@@ -255,11 +256,10 @@ Chattogram, Bangladesh
 ## License
 
 This project is intended for academic, educational, and institutional use.  
-You may add a license here, for example:
 
 
 ```md
-All rights reserved.
+All rights reserved by IRG.
 ```
 
 ---
